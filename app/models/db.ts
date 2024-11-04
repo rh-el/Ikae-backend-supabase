@@ -1,7 +1,8 @@
 const mysql = require("mysql2");
-const dbConfig = require("../config/db.config.js");
+import dbConfig from "../config/db.config";
+import { ErrorRequestHandler } from "express";
 
-// Create a connection to the database
+// creates db connection
 const connection = mysql.createConnection({
     host: dbConfig.host,
     port: dbConfig.port,
@@ -10,11 +11,11 @@ const connection = mysql.createConnection({
     database: dbConfig.database
 });
 
-// open the MySQL connection
-connection.connect(error => {
+// opens the connection
+connection.connect((error: ErrorRequestHandler) => {
   if (error) throw error;
   console.log("Successfully connected to the database.");
 });
 
-// exporte la connexion à la db dans les autres fichiers utilisant require(../db.js)
-module.exports = connection;
+// exports db connection to other file using import connection from "../db.ts"
+export default connection
