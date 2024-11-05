@@ -12,13 +12,15 @@ const getAllProducts = (req: Request, res: Response) => {
             console.log('An error occured while retrieving all products');
 
         }
+        
+        if (data?.length !== undefined && data.length > 0) {
+            for (let i = 0; i < data.length; i++) {
+                const formattedImageLinks = JSON.parse(data[i].image_links)
+                data[i].image_links = formattedImageLinks
+            }
+        }
+        
         res.send(data)
-            // if (data?.length !== undefined && data.length > 0) {
-            //     for (let i = 0; i < data.length; i++) {
-            //         const productImages = getImages(data[i])
-            //         // add image array to data
-            //     }
-            // }
     })
 }
 
@@ -110,14 +112,14 @@ const postNewProduct = (req: Request, res: Response) => {
 
 
 
-// images request
-// get all images from product id
-// return arr with all urls
-const getImages = (productData: Product | null) => {
-    let imageArray: string[] = []
-        console.log('product', productData);
+// // images request
+// // get all images from product id
+// // return arr with all urls
+// const getImages = (productData: Product | null) => {
+//     let imageArray: string[] = []
+//         console.log('product', productData);
     
-}
+// }
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct

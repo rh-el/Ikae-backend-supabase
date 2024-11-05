@@ -11,6 +11,7 @@ interface Product {
     description: string;
     in_stock: boolean;
     user_id: number;
+    image_links: string;
 }
 
 class Product {
@@ -27,7 +28,8 @@ class Product {
         this.state = product.state;
         this.description = product.description;
         this.in_stock = product.in_stock;
-        this.user_id = product.user_id
+        this.user_id = product.user_id;
+        this.image_links = product.image_links;
     }
 }
 
