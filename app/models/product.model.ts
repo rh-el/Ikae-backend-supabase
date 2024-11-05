@@ -48,7 +48,7 @@ Product.getAll = (result: (err: Error | null, data: Product[] | null) => void) =
             return
         }
         // returns query result
-        console.log("products: ", res);
+        // console.log("products: ", res);
         result(null, res)
         
     })

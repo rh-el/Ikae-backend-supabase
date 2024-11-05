@@ -11,6 +11,9 @@ const productRoutes = (app: Express) => {
     // define a route for the root path
     router.get('/', products.getAll)
 
+    
+
+
 
 
     // mount the router to the main app on the specified path

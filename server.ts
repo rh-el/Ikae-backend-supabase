@@ -16,6 +16,8 @@ app.use(express.json());
 
 productRoutes(app)
 
+app.use(express.static('app'))
+app.use('/img', express.static('img'))
 
 // launch request listener on port 3000
 app.listen(3000, () => {
