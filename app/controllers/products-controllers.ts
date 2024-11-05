@@ -39,6 +39,20 @@ const getProduct = (req: Request, res: Response) => {
     })
 }
 
+const deleteProduct = (req: Request, res: Response) => {
+    Product.deleteProductInfo((err, data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || 'Some error occured while getting product info.'    
+            })
+            console.log('Some error occured while getting product info.');
+        }
+        else {
+            res.send('Product deleted.') 
+        }
+    })
+}
+
 
 // const findById = (req ,res) => {
 //     Post.findById(req.params.id, (err, data) => {
@@ -65,3 +79,4 @@ const getImages = (productData: Product | null) => {
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
+exports.deleteProduct = deleteProduct
