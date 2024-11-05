@@ -9,8 +9,10 @@ const productRoutes = (app: Express) => {
     const router = require("express").Router()
 
     // define a route for the root path
-    router.get('/', products.getAll)
+    router.get('/', products.getAllProducts)
 
+    //route for each product
+    router.get('/6', products.getProduct)
 
 
     // mount the router to the main app on the specified path
