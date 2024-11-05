@@ -6,4 +6,13 @@ const getAllProductsQuery = () => {
         products`
 }
 
+const getProductInfoQuery = () => {
+    return `
+    SELECT
+        *
+    FROM
+        products WHERE id=6`
+}
+
 exports.getAllProductsQuery = getAllProductsQuery
+exports.getProductInfoQuery = getProductInfoQuery
