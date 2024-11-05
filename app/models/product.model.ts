@@ -56,9 +56,13 @@ Product.getAll = (result: (err: Error | null, data: Product[] | null) => void) =
 }
 
 Product.getProductInfo = (req:any, result: (err: Error | null, data: Product | null) => void) => {
-    const query = queries.getProductInfoQuery()
+    const productID = req;
+    //affiche directement le 6 indiqué en id:
+    console.log("productID: ", productID)
 
-        connection.query(query, req.params.id, (err: Error, res: Product) => {
+    const query = queries.getProductInfoQuery(productID)
+
+        connection.query(query, (err: Error, res: Product) => {
         // error handler
         if (err) {
             console.log("error: ", err);

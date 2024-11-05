@@ -8,12 +8,12 @@ const getAllProductsQuery = () => {
         products`
 }
 
-const getProductInfoQuery = () => {
+const getProductInfoQuery = (productID:any) => {
     return `
     SELECT
         *
     FROM
-        products WHERE id = ${id}`
+        products WHERE id = ${productID}`
 }
 
 exports.getAllProductsQuery = getAllProductsQuery
