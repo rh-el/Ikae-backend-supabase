@@ -74,6 +74,23 @@ Product.getProductInfo = (result: (err: Error | null, data: Product | null) => v
 }
 
 
+// Post.findById = (id, result) => {
+//     const query = `SELECT * FROM posts WHERE ID = ${id}`
+//     sql.query(query, (err, res) => {
+//         if (err) {
+//             console.log("error: ", err);
+//             result(err, null);
+//             return;            
+//         }
+
+//         if (res.length) {
+//             console.log("found posts: ", res[0]);
+//             result(null, res[0])
+//             return;            
+//         }
+//     })
+// }
+
 export default Product
 
 

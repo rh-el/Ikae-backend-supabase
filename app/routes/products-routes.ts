@@ -9,14 +9,14 @@ const productRoutes = (app: Express) => {
     const router = require("express").Router()
 
     // define a route for the root path
-    router.get('/', products.getAllProducts)
+    router.get('/home', products.getAllProducts)
 
     //route for each product
-    router.get('/6', products.getProduct)
+    router.get('/product/:id', products.getProduct)
 
 
     // mount the router to the main app on the specified path
-    app.use('/api/products', router)
+    app.use('/', router)
 }
 
 export default productRoutes
