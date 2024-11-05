@@ -17,6 +17,9 @@ const productRoutes = (app: Express) => {
     //route to delete product from dashboard
     router.delete('/dashboard/delete/6', products.deleteProduct)
 
+    //route to update product from dashboard
+    router.put('/dashboard/update/8', products.updateProduct)
+
 
     // mount the router to the main app on the specified path
     app.use('/', router)

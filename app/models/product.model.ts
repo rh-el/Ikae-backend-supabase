@@ -20,6 +20,7 @@ class Product {
     static getAll: (result: (err: Error | null, data: Product[] | null) => void) => void;
     static getProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
     static deleteProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
+    static updateProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
     constructor(product: any) {
         this.id = product.id;
         this.title = product.title;
@@ -76,6 +77,22 @@ Product.getProductInfo = (result: (err: Error | null, data: Product | null) => v
 
 Product.deleteProductInfo = (result: (err: Error | null, data: Product | null) => void) => {
     const query = queries.deleteProductQuery()
+
+        connection.query(query, (err: Error, res: Product) => {
+        // error handler
+        if (err) {
+            console.log("error: ", err);
+            result(err, null)
+            return
+        }
+        // returns query result
+        console.log("product: ", res);
+        result(null, res)
+    })
+}
+
+Product.updateProductInfo = (result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.updateProductQuery()
 
         connection.query(query, (err: Error, res: Product) => {
         // error handler

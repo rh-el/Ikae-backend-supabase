@@ -43,12 +43,24 @@ const deleteProduct = (req: Request, res: Response) => {
     Product.deleteProductInfo((err, data) => {
         if(err){
             res.status(500).send({
-                message: err.message || 'Some error occured while getting product info.'    
+                message: err.message || 'Some error occured while deleted product info.'    
             })
-            console.log('Some error occured while getting product info.');
         }
         else {
-            res.send('Product deleted.') 
+            res.send('Product info deleted.') 
+        }
+    })
+}
+
+const updateProduct = (req: Request, res: Response) => {
+    Product.updateProductInfo((err, data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || 'Some error occured while updating product info.'    
+            })
+        }
+        else {
+            res.send('Product info updated: out of stock.') 
         }
     })
 }
@@ -80,3 +92,4 @@ const getImages = (productData: Product | null) => {
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
 exports.deleteProduct = deleteProduct
+exports.updateProduct = updateProduct
