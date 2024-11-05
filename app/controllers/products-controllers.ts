@@ -23,10 +23,10 @@ const getAllProducts = (req: Request, res: Response) => {
 }
 
 const getProduct = (req: Request, res: Response) => {
-    Product.getProductInfo((err, data) => {
+    Product.getProductInfo(req.params.id, (err, data) => {
         if(err){
             res.status(500).send({
-                message: err.message || 'Some error occured while getting product info.'    
+                message: err.message || 'Some error occured while getting product info with id : ${req.params.id}.'    
             })
             console.log('Some error occured while getting product info.');
         } else {

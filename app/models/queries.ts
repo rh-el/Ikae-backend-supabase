@@ -1,3 +1,5 @@
+const productModels = require("./product.model");
+
 const getAllProductsQuery = () => {
     return `
     SELECT
@@ -11,7 +13,7 @@ const getProductInfoQuery = () => {
     SELECT
         *
     FROM
-        products WHERE id=6`
+        products WHERE id = ${id}`
 }
 
 exports.getAllProductsQuery = getAllProductsQuery
