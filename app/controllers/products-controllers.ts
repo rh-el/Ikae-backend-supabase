@@ -39,6 +39,22 @@ const getProduct = (req: Request, res: Response) => {
     })
 }
 
+const getConfirmation = (req: Request, res: Response) => {
+    Product.getConfirmationInfo((err,data) => {
+       if(err){
+            res.status(500).send({
+                message: err.message || 'Some error occured while getting your confirmation informations.'    
+            })
+            console.log('Some error occured while getting your confirmation informations.');
+        } else {
+            res.send(data)
+
+            
+        }
+       
+        
+    })
+}
 
 // const findById = (req ,res) => {
 //     Post.findById(req.params.id, (err, data) => {
@@ -65,3 +81,4 @@ const getImages = (productData: Product | null) => {
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
+exports.getConfirmation = getConfirmation

@@ -19,6 +19,7 @@ interface Product {
 class Product {
     static getAll: (result: (err: Error | null, data: Product[] | null) => void) => void;
     static getProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
+    static getConfirmationInfo: (result: (err: Error | null, data: Product[] | null) => void) => void;
     constructor(product: any) {
         this.id = product.id;
         this.title = product.title;
@@ -58,7 +59,6 @@ Product.getAll = (result: (err: Error | null, data: Product[] | null) => void) =
 Product.getProductInfo = (result: (err: Error | null, data: Product | null) => void) => {
     const query = queries.getProductInfoQuery()
 
-    console.log('coucou!!')
         connection.query(query, (err: Error, res: Product) => {
         // error handler
         if (err) {
@@ -70,6 +70,20 @@ Product.getProductInfo = (result: (err: Error | null, data: Product | null) => v
         console.log("product: ", res);
         result(null, res)
         
+    })
+}
+
+Product.getConfirmationInfo = (result: (err: Error | null, data: Product[] | null) => void) => {
+    const query = queries.getConfirmationInfoQuery()
+
+    connection.query(query, (err: Error, res: Product[]) => {
+        if (err) {
+            console.log("error: ",err);
+            result(err, null)
+            return
+        }
+        console.log("product: ",res);
+        result(null,res)
     })
 }
 

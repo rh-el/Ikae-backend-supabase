@@ -14,6 +14,7 @@ const productRoutes = (app: Express) => {
     //route for each product
     router.get('/product/:id', products.getProduct)
 
+    router.get('/confirmation/:id', products.getConfirmation)
 
     // mount the router to the main app on the specified path
     app.use('/', router)
