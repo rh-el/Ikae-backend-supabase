@@ -1,23 +1,27 @@
 const getAllProductsQuery = () => {
     return `
     SELECT 
-    products.id,
-    products.product_name, 
-    products.price,
-    products.type,
-    products.material,
-    products.color,
-    products.state,
-    products.description,
-    products.in_stock,
-    products.user_id,
-    CONCAT('[', GROUP_CONCAT(CONCAT('"', images.image_link, '"') SEPARATOR ', '), ']') AS image_links
-FROM 
-    products 
-INNER JOIN 
-    images ON images.product_id = products.id
-GROUP BY 
-    products.id;`
+        products.id, 
+        products.product_name, 
+        products.price,
+        products.type,
+        products.material,
+        products.color,
+        products.state,
+        products.description,
+        products.in_stock,
+        products.user_id,
+    CASE 
+        WHEN COUNT(images.image_link) > 0 
+        THEN CONCAT('[', GROUP_CONCAT(CONCAT('"', images.image_link, '"') SEPARATOR ', '), ']') 
+        ELSE NULL 
+    END AS image_links
+    FROM 
+        products
+    LEFT JOIN 
+        images ON images.product_id = products.id
+    GROUP BY 
+        products.id;`
 }
 
 const getProductInfoQuery = (productID:string) => {

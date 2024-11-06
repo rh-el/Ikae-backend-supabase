@@ -19,7 +19,9 @@ const getAllProducts = (req: Request, res: Response) => {
                 data[i].image_links = formattedImageLinks
             }
         }
+        console.log(data);
         
+
         res.send(data)
     })
 }
