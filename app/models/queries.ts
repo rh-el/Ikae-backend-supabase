@@ -4,6 +4,13 @@ const getAllProductsQuery = () => {
     products.id,
     products.product_name, 
     products.price,
+    products.type,
+    products.material,
+    products.color,
+    products.state,
+    products.description,
+    products.in_stock,
+    products.user_id,
     CONCAT('[', GROUP_CONCAT(CONCAT('"', images.image_link, '"') SEPARATOR ', '), ']') AS image_links
 FROM 
     products 
