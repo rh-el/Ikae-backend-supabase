@@ -80,8 +80,8 @@ const deleteProduct = (req: Request, res: Response) => {
     })
 }
 
-const updateProduct = (req: Request, res: Response) => {
-    Product.updateProductInfo(req.params.id, (err, data) => {
+const updateProductStock = (req: Request, res: Response) => {
+    Product.updateProductStock(req.params.id, (err, data) => {
         if(err){
             res.status(500).send({
                 message: err.message || 'Some error occured while updating product info.'    
@@ -122,35 +122,42 @@ const postNewProduct = (req: Request, res: Response) => {
     })
 }
 
-// const findById = (req ,res) => {
-//     Post.findById(req.params.id, (err, data) => {
-//         if (err) {
-//             res.status(500).send({
-//                 message: `Some error occured while getting post with id: ${req.params.id}`
-//             })
-//         } else {
-//             res.send(data)
-//         }
-//     })
-// }
 
+const updateProductInfo = (req: Request, res: Response) => {
+    if (!req.body) {
+        res.status(400).send({
+            message: "Content can not be empty!"
+        })
+    }
+    const product = new Product({
+        product_name : req.body.product_name,
+        price : req.body.price,
+        type : req.body.type,
+        material : req.body.material,
+        color : req.body.color,
+        state : req.body.state,
+        description : req.body.description,
+        in_stock : req.body.in_stock,
+        user_id : req.body.user_id,
+    })
 
+    Product.updateProductInfo(product, req.params.id, (err, data) => {
+        if (err) {
+            res.status(500).send({
+                message: err.message || 'Some error occured while updating product.'
+            })
+        } else {
+            res.send(data);
+        }
+    })
+}
 
-
-
-// // images request
-// // get all images from product id
-// // return arr with all urls
-// const getImages = (productData: Product | null) => {
-//     let imageArray: string[] = []
-//         console.log('product', productData);
-    
-// }
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
 exports.deleteProduct = deleteProduct
-exports.updateProduct = updateProduct
+exports.updateProductStock = updateProductStock
 exports.getConfirmation = getConfirmation
 exports.getAllProductsDashboard = getAllProductsDashboard
 exports.postNewProduct = postNewProduct
+exports.updateProductInfo = updateProductInfo

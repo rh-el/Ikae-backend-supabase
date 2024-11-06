@@ -34,7 +34,7 @@ const deleteProductQuery = (productID: string) => {
         products WHERE id=${productID}`
 }
 
-const updateProductQuery = (productID: string) => {
+const updateProductStockQuery = (productID: string) => {
     return `
     UPDATE 
         products
@@ -63,10 +63,40 @@ const postNewProductQuery = () => {
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
 }
 
+const updateProductInfoQuery = (
+    product_id: number,
+    product_name: string,
+    price: number,
+    type: string,
+    material: string,
+    color: string,
+    state: string,
+    description: string,
+    in_stock: boolean,
+    user_id: number
+) => {
+    return `
+    UPDATE
+        products
+    SET
+        product_name = "${product_name}",
+        price = ${price},
+        type = "${type}",
+        material = "${material}",
+        color = "${color}",
+        state = "${state}",
+        description = "${description}",
+        in_stock = ${in_stock},
+        user_id = ${user_id}
+    WHERE
+        id = ${product_id}`
+}
+
 
 exports.getAllProductsQuery = getAllProductsQuery
 exports.getProductInfoQuery = getProductInfoQuery
 exports.deleteProductQuery = deleteProductQuery
-exports.updateProductQuery = updateProductQuery
+exports.updateProductStockQuery = updateProductStockQuery
 exports.getConfirmationInfoQuery = getConfirmationInfoQuery 
 exports.postNewProductQuery = postNewProductQuery
+exports.updateProductInfoQuery = updateProductInfoQuery

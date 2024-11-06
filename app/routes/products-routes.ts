@@ -13,19 +13,23 @@ const productRoutes = (app: Express) => {
 
     // define a route for each product
     router.get('/product/:id', products.getProduct)
-
-    //route to delete product from dashboard
-    router.delete('/dashboard/delete/:id', products.deleteProduct)
-
-    //route to update product from dashboard (set to 'out of stock')
-    router.put('/dashboard/update/:id', products.updateProduct)
-
+    
     // route to get confirmation after ordering
     router.get('/confirmation/:id', products.getConfirmation)
 
     // define a route for dashboard
     router.get('/dashboard', products.getAllProductsDashboard)
 
+    //route to delete product from dashboard
+    router.delete('/dashboard/delete/:id', products.deleteProduct)
+
+    //route to update product stock from dashboard (set to 'out of stock')
+    router.put('/dashboard/update-stock/:id', products.updateProductStock)
+
+    // update product infos from dashboard
+    router.put('/dashboard/update-product/:id', products.updateProductInfo)
+
+    // create a new product
     router.post('/dashboard/new-product', products.postNewProduct)
 
     // mount the router to the main app on the specified path
