@@ -7,9 +7,9 @@ const getAllProducts = (req: Request, res: Response) => {
     Product.getAll((err, data) => {
         if (err) {
             res.status(500).send({
-                message: err.message || 'Some error occured while getting posts.'
+                message: err.message || 'An error occured while retrieving products.'
             })
-            console.log('Some error occured while getting all products');
+            console.log('An error occured while retrieving all products');
 
         }
         res.send(data)
@@ -26,9 +26,9 @@ const getProduct = (req: Request, res: Response) => {
     Product.getProductInfo((err, data) => {
         if(err){
             res.status(500).send({
-                message: err.message || 'Some error occured while getting product info.'    
+                message: err.message || 'An error occured while retrieving product info.'    
             })
-            console.log('Some error occured while getting product info.');
+            console.log('An error occured while retrieving product info.');
         } else {
             res.send(data)
 
@@ -43,9 +43,9 @@ const getConfirmation = (req: Request, res: Response) => {
     Product.getConfirmationInfo((err,data) => {
        if(err){
             res.status(500).send({
-                message: err.message || 'Some error occured while getting your confirmation informations.'    
+                message: err.message || 'An error occured while retrieving your confirmation informations.'    
             })
-            console.log('Some error occured while getting your confirmation informations.');
+            console.log('An occured while retrieving your confirmation informations.');
         } else {
             res.send(data)
 
@@ -67,6 +67,8 @@ const getConfirmation = (req: Request, res: Response) => {
 //         }
 //     })
 // }
+
+
 
 
 
