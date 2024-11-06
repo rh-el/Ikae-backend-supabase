@@ -20,7 +20,9 @@ const productRoutes = (app: Express) => {
     //route to update product from dashboard (set to 'out of stock')
     router.put('/dashboard/update/:id', products.updateProduct)
 
+    // route to get confirmation after ordering
     router.get('/confirmation/:id', products.getConfirmation)
+
     // define a route for dashboard
     router.get('/dashboard', products.getAllProductsDashboard)
 
