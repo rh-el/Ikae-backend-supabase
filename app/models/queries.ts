@@ -24,6 +24,15 @@ const getConfirmationInfoQuery = () => {
 
 }
 
+const postNewProductQuery = () => {
+    return `
+    INSERT INTO 
+        products (product_name, price, type, material, color, state, description, in_stock, user_id)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
+}
+
+
 exports.getAllProductsQuery = getAllProductsQuery
 exports.getProductInfoQuery = getProductInfoQuery
 exports.getConfirmationInfoQuery = getConfirmationInfoQuery 
+exports.postNewProductQuery = postNewProductQuery
