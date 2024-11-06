@@ -40,7 +40,7 @@ const getProduct = (req: Request, res: Response) => {
 }
 
 const deleteProduct = (req: Request, res: Response) => {
-    Product.deleteProductInfo((err, data) => {
+    Product.deleteProductInfo(req.params.id, (err, data) => {
         if(err){
             res.status(500).send({
                 message: err.message || 'Some error occured while deleted product info.'    
@@ -53,7 +53,7 @@ const deleteProduct = (req: Request, res: Response) => {
 }
 
 const updateProduct = (req: Request, res: Response) => {
-    Product.updateProductInfo((err, data) => {
+    Product.updateProductInfo(req.params.id, (err, data) => {
         if(err){
             res.status(500).send({
                 message: err.message || 'Some error occured while updating product info.'    

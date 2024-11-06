@@ -19,8 +19,8 @@ interface Product {
 class Product {
     static getAll: (result: (err: Error | null, data: Product[] | null) => void) => void;
     static getProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
-    static deleteProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
-    static updateProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
+    static deleteProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
+    static updateProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
     constructor(product: any) {
         this.id = product.id;
         this.title = product.title;
@@ -75,8 +75,8 @@ Product.getProductInfo = (result: (err: Error | null, data: Product | null) => v
     })
 }
 
-Product.deleteProductInfo = (result: (err: Error | null, data: Product | null) => void) => {
-    const query = queries.deleteProductQuery()
+Product.deleteProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.deleteProductQuery(productID)
 
         connection.query(query, (err: Error, res: Product) => {
         // error handler
@@ -91,8 +91,8 @@ Product.deleteProductInfo = (result: (err: Error | null, data: Product | null) =
     })
 }
 
-Product.updateProductInfo = (result: (err: Error | null, data: Product | null) => void) => {
-    const query = queries.updateProductQuery()
+Product.updateProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.updateProductQuery(productID)
 
         connection.query(query, (err: Error, res: Product) => {
         // error handler

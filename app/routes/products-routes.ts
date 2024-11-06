@@ -15,10 +15,10 @@ const productRoutes = (app: Express) => {
     router.get('/product/:id', products.getProduct)
 
     //route to delete product from dashboard
-    router.delete('/dashboard/delete/6', products.deleteProduct)
+    router.delete('/dashboard/delete/:id', products.deleteProduct)
 
-    //route to update product from dashboard
-    router.put('/dashboard/update/8', products.updateProduct)
+    //route to update product from dashboard (set to 'out of stock')
+    router.put('/dashboard/update/:id', products.updateProduct)
 
 
     // mount the router to the main app on the specified path

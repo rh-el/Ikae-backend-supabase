@@ -14,20 +14,20 @@ const getProductInfoQuery = () => {
         products WHERE id=6`
 }
 
-const deleteProductQuery = () => {
+const deleteProductQuery = (productID: string) => {
     return `
     DELETE FROM
-        products WHERE id=6`
+        products WHERE id=${productID}`
 }
 
-const updateProductQuery = () => {
+const updateProductQuery = (productID: string) => {
     return `
     UPDATE 
         products
     SET 
         in_stock = false
     WHERE 
-        id=8`
+        id=${productID}`
 }
 
 exports.getAllProductsQuery = getAllProductsQuery
