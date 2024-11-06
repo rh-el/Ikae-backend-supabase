@@ -14,6 +14,12 @@ const productRoutes = (app: Express) => {
     // define a route for each product
     router.get('/product/:id', products.getProduct)
 
+    //route to delete product from dashboard
+    router.delete('/dashboard/delete/:id', products.deleteProduct)
+
+    //route to update product from dashboard (set to 'out of stock')
+    router.put('/dashboard/update/:id', products.updateProduct)
+
     router.get('/confirmation/:id', products.getConfirmation)
     // define a route for dashboard
     router.get('/dashboard', products.getAllProductsDashboard)
