@@ -16,6 +16,9 @@ const productRoutes = (app: Express) => {
 	// route to order
 	router.post("/order", orders.postNewOrder);
 
+	// route to order
+	router.post("/order", orders.postNewOrder);
+
 	// route to get confirmation after ordering
 	router.get("/confirmation/:id", products.getConfirmation);
 
