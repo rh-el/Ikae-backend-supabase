@@ -21,6 +21,7 @@ class Product {
     static postNewProduct: (newProduct: Product, result: (err: Error | null, data: Product | null) => void) => void;
     static deleteProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
     static updateProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
+    
     constructor(product: any) {
         this.product_name = product.product_name;
         this.price = product.price;
@@ -34,6 +35,7 @@ class Product {
         this.image_links = product.image_links;
     }
 }
+
 
 // defines getAll method for Product
 Product.getAll = (result: (err: Error | null, data: Product[] | null) => void) => {

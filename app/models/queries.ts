@@ -63,6 +63,18 @@ const postNewProductQuery = () => {
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`
 }
 
+const postNewOrderQuery = () => {
+    return `
+    INSERT INTO orders (user_id, total_price) VALUES (?,?);
+   `   
+}
+
+const postNewOrderItemQuery = () => {
+    return ` 
+    INSERT INTO order_items(order_id, product_id) VALUES (?,?);
+    `
+} 
+
 
 exports.getAllProductsQuery = getAllProductsQuery
 exports.getProductInfoQuery = getProductInfoQuery
@@ -70,3 +82,5 @@ exports.deleteProductQuery = deleteProductQuery
 exports.updateProductQuery = updateProductQuery
 exports.getConfirmationInfoQuery = getConfirmationInfoQuery 
 exports.postNewProductQuery = postNewProductQuery
+exports.postNewOrderQuery = postNewOrderQuery
+exports.postNewOrderItemQuery = postNewOrderItemQuery

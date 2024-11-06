@@ -3,7 +3,7 @@ const productRoutes = (app: Express) => {
 
     // import products controllers
     const products = require("../controllers/products-controllers")
-
+    const orders = require("../controllers/orders-controllers")
     // import router module from express package
     // a tool for organizing and structuring the application's routes
     const router = require("express").Router()
@@ -19,6 +19,9 @@ const productRoutes = (app: Express) => {
 
     //route to update product from dashboard (set to 'out of stock')
     router.put('/dashboard/update/:id', products.updateProduct)
+
+    // route to order
+    router.post('/order', orders.postNewOrder )
 
     // route to get confirmation after ordering
     router.get('/confirmation/:id', products.getConfirmation)
