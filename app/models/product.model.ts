@@ -19,6 +19,8 @@ class Product {
     static getProductInfo: (req: any, result: (err: Error | null, data: Product | null) => void) => void;
     static getConfirmationInfo: (result: (err: Error | null, data: Product[] | null) => void) => void;
     static postNewProduct: (newProduct: Product, result: (err: Error | null, data: Product | null) => void) => void;
+    static deleteProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
+    static updateProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
     constructor(product: any) {
         this.product_name = product.product_name;
         this.price = product.price;
@@ -67,6 +69,70 @@ Product.getProductInfo = (productID: number, result: (err: Error | null, data: P
         console.log("product: ", res);
         result(null, res)
         
+    })
+}
+
+Product.deleteProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.deleteProductQuery(productID)
+
+        connection.query(query, (err: Error, res: Product) => {
+        // error handler
+        if (err) {
+            console.log("error: ", err);
+            result(err, null)
+            return
+        }
+        // returns query result
+        console.log("product: ", res);
+        result(null, res)
+    })
+}
+
+Product.updateProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.updateProductQuery(productID)
+
+        connection.query(query, (err: Error, res: Product) => {
+        // error handler
+        if (err) {
+            console.log("error: ", err);
+            result(err, null)
+            return
+        }
+        // returns query result
+        console.log("product: ", res);
+        result(null, res)
+    })
+}
+
+Product.deleteProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.deleteProductQuery(productID)
+
+        connection.query(query, (err: Error, res: Product) => {
+        // error handler
+        if (err) {
+            console.log("error: ", err);
+            result(err, null)
+            return
+        }
+        // returns query result
+        console.log("product: ", res);
+        result(null, res)
+    })
+}
+
+Product.updateProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.updateProductQuery(productID)
+
+        connection.query(query, (err: Error, res: Product) => {
+        // error handler
+        if (err) {
+            console.log("error: ", err);
+            result(err, null)
+            return
+        }
+        // returns query result
+        console.log("product: ", res);
+        result(null, res)
     })
 }
 

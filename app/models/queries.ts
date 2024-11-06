@@ -21,6 +21,22 @@ const getProductInfoQuery = (productID:number) => {
         products WHERE id = ${productID}`
 }
 
+const deleteProductQuery = (productID: string) => {
+    return `
+    DELETE FROM
+        products WHERE id=${productID}`
+}
+
+const updateProductQuery = (productID: string) => {
+    return `
+    UPDATE 
+        products
+    SET 
+        in_stock = false
+    WHERE 
+        id=${productID}`
+}
+
 const getConfirmationInfoQuery = () => {
     return `
     SELECT orders.user_id, orders.total_price, order_items.order_id, products.product_name, products.price, products.description
@@ -41,5 +57,7 @@ const postNewProductQuery = () => {
 
 exports.getAllProductsQuery = getAllProductsQuery
 exports.getProductInfoQuery = getProductInfoQuery
+exports.deleteProductQuery = deleteProductQuery
+exports.updateProductQuery = updateProductQuery
 exports.getConfirmationInfoQuery = getConfirmationInfoQuery 
 exports.postNewProductQuery = postNewProductQuery

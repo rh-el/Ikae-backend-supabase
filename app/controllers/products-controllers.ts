@@ -66,6 +66,32 @@ const getConfirmation = (req: Request, res: Response) => {
         
     })
 }
+
+const deleteProduct = (req: Request, res: Response) => {
+    Product.deleteProductInfo(req.params.id, (err, data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || 'Some error occured while deleted product info.'    
+            })
+        }
+        else {
+            res.send('Product info deleted.') 
+        }
+    })
+}
+
+const updateProduct = (req: Request, res: Response) => {
+    Product.updateProductInfo(req.params.id, (err, data) => {
+        if(err){
+            res.status(500).send({
+                message: err.message || 'Some error occured while updating product info.'    
+            })
+        }
+        else {
+            res.send('Product info updated: out of stock.') 
+        }
+    })
+}
 const postNewProduct = (req: Request, res: Response) => {
     if (!req.body) {
         res.status(400).send({
@@ -123,6 +149,8 @@ const postNewProduct = (req: Request, res: Response) => {
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
+exports.deleteProduct = deleteProduct
+exports.updateProduct = updateProduct
 exports.getConfirmation = getConfirmation
 exports.getAllProductsDashboard = getAllProductsDashboard
 exports.postNewProduct = postNewProduct
