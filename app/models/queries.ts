@@ -1,5 +1,3 @@
-const productModels = require("./product.model");
-
 const getAllProductsQuery = () => {
     return `
     SELECT
@@ -8,7 +6,7 @@ const getAllProductsQuery = () => {
         products`
 }
 
-const getProductInfoQuery = (productID:any) => {
+const getProductInfoQuery = (productID:number) => {
     return `
     SELECT
         *

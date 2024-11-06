@@ -40,20 +40,6 @@ const getProduct = (req: Request, res: Response) => {
 }
 
 
-// const findById = (req ,res) => {
-//     Post.findById(req.params.id, (err, data) => {
-//         if (err) {
-//             res.status(500).send({
-//                 message: `Some error occured while getting post with id: ${req.params.id}`
-//             })
-//         } else {
-//             res.send(data)
-//         }
-//     })
-// }
-
-
-
 // images request
 // get all images from product id
 // return arr with all urls
