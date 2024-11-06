@@ -46,10 +46,11 @@ const updateProductQuery = (productID: string) => {
 
 const getConfirmationInfoQuery = () => {
     return `
-    SELECT orders.user_id, orders.total_price, order_items.order_id, products.product_name, products.price, products.description
+    SELECT orders.user_id, orders.total_price, order_items.order_id, products.product_name, products.price, products.description, users.firstname, users.lastname
     FROM orders
     INNER JOIN order_items ON orders.id = order_items.order_id
     INNER JOIN products ON products.id = order_items.product_id
+    INNER JOIN users ON users.id = orders.user_id
     `
 
 }
