@@ -5,5 +5,4 @@ const dbConfig = {
     password: '',
     database: 'ikae',
 }
-
 export default dbConfig

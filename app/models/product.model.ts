@@ -18,7 +18,8 @@ interface Product {
 
 class Product {
     static getAll: (result: (err: Error | null, data: Product[] | null) => void) => void;
-    static getProductInfo: (req:any, result: (err: Error | null, data: Product | null) => void) => void;
+    static getProductInfo: (result: (err: Error | null, data: Product | null) => void) => void;
+    static getConfirmationInfo: (result: (err: Error | null, data: Product[] | null) => void) => void;
     constructor(product: any) {
         this.id = product.id;
         this.title = product.title;
@@ -61,6 +62,9 @@ Product.getProductInfo = (productID:number, result: (err: Error | null, data: Pr
 
     const query = queries.getProductInfoQuery(productID)
 
+Product.getProductInfo = (result: (err: Error | null, data: Product | null) => void) => {
+    const query = queries.getProductInfoQuery()
+
         connection.query(query, (err: Error, res: Product) => {
         // error handler
         if (err) {
@@ -72,6 +76,34 @@ Product.getProductInfo = (productID:number, result: (err: Error | null, data: Pr
         console.log("product: ", res);
         result(null, res)
         
+    })
+}
+
+Product.getConfirmationInfo = (result: (err: Error | null, data: Product[] | null) => void) => {
+    const query = queries.getConfirmationInfoQuery()
+
+    connection.query(query, (err: Error, res: Product[]) => {
+        if (err) {
+            console.log("error: ",err);
+            result(err, null)
+            return
+        }
+        console.log("product: ",res);
+        result(null,res)
+    })
+}
+
+Product.getConfirmationInfo = (result: (err: Error | null, data: Product[] | null) => void) => {
+    const query = queries.getConfirmationInfoQuery()
+
+    connection.query(query, (err: Error, res: Product[]) => {
+        if (err) {
+            console.log("error: ",err);
+            result(err, null)
+            return
+        }
+        console.log("product: ",res);
+        result(null,res)
     })
 }
 
