@@ -16,8 +16,8 @@ interface Product {
 
 class Product {
     static getAll: (result: (err: Error | null, data: Product[] | null) => void) => void;
-    static getProductInfo: (req: any, result: (err: Error | null, data: Product | null) => void) => void;
-    static getConfirmationInfo: (result: (err: Error | null, data: Product[] | null) => void) => void;
+    static getProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
+    static getConfirmationInfo: (orderID: string, result: (err: Error | null, data: Product[] | null) => void) => void;
     static postNewProduct: (newProduct: Product, result: (err: Error | null, data: Product | null) => void) => void;
     static deleteProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
     static updateProductInfo: (productID: string, result: (err: Error | null, data: Product | null) => void) => void;
@@ -55,7 +55,7 @@ Product.getAll = (result: (err: Error | null, data: Product[] | null) => void) =
     })
 }
 
-Product.getProductInfo = (productID: number, result: (err: Error | null, data: Product | null) => void) => {
+Product.getProductInfo = (productID: string, result: (err: Error | null, data: Product | null) => void) => {
     const query = queries.getProductInfoQuery(productID)
 
     connection.query(query, (err: Error, res: Product) => {
@@ -151,8 +151,8 @@ Product.postNewProduct = (newProduct: Product, result: (err: Error | null, data:
     })
 }
 
-Product.getConfirmationInfo = (result: (err: Error | null, data: Product[] | null) => void) => {
-    const query = queries.getConfirmationInfoQuery()
+Product.getConfirmationInfo = (orderID: string, result: (err: Error | null, data: Product[] | null) => void) => {
+    const query = queries.getConfirmationInfoQuery(orderID)
 
     connection.query(query, (err: Error, res: Product[]) => {
         if (err) {

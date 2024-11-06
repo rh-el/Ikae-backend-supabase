@@ -51,7 +51,7 @@ const getAllProductsDashboard = (req: Request, res: Response) => {
 }
 
 const getConfirmation = (req: Request, res: Response) => {
-    Product.getConfirmationInfo((err,data) => {
+    Product.getConfirmationInfo(req.params.id, (err,data) => {
        if(err){
             res.status(500).send({
                 message: err.message || 'An error occured while retrieving your confirmation informations.'    
