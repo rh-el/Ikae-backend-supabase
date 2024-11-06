@@ -1,39 +1,47 @@
 import { Express } from "express";
 const productRoutes = (app: Express) => {
+	// import products controllers
+	const products = require("../controllers/products-controllers");
+	const orders = require("../controllers/orders-controllers");
+	// import router module from express package
+	// a tool for organizing and structuring the application's routes
+	const router = require("express").Router();
 
-    // import products controllers
-    const products = require("../controllers/products-controllers")
+	// define a route for the root path
+	router.get("/home", products.getAllProducts);
 
-    // import router module from express package
-    // a tool for organizing and structuring the application's routes
-    const router = require("express").Router()
+	// define a route for each product
+	router.get("/product/:id", products.getProduct);
 
-    // define a route for the root path
-    router.get('/home', products.getAllProducts)
+	//route to delete product from dashboard
+	router.delete("/dashboard/delete/:id", products.deleteProduct);
 
-    // define a route for each product
-    router.get('/product/:id', products.getProduct)
-    
-    // route to get confirmation after ordering
-    router.get('/confirmation/:id', products.getConfirmation)
+	//route to update product from dashboard (set to 'out of stock')
+	router.put("/dashboard/update/:id", products.updateProduct);
 
-    // define a route for dashboard
-    router.get('/dashboard', products.getAllProductsDashboard)
+	// route to order
+	router.post("/order", orders.postNewOrder);
 
-    //route to delete product from dashboard
-    router.delete('/dashboard/delete/:id', products.deleteProduct)
+	// route to get confirmation after ordering
+	router.get("/confirmation/:id", products.getConfirmation);
 
-    //route to update product stock from dashboard (set to 'out of stock')
-    router.put('/dashboard/update-stock/:id', products.updateProductStock)
+	// define a route for dashboard
+	router.get("/dashboard", products.getAllProductsDashboard);
 
-    // update product infos from dashboard
-    router.put('/dashboard/update-product/:id', products.updateProductInfo)
+	//route to delete product from dashboard
+	router.delete("/dashboard/delete/:id", products.deleteProduct);
 
-    // create a new product
-    router.post('/dashboard/new-product', products.postNewProduct)
+	//route to update product stock from dashboard (set to 'out of stock')
+	router.put("/dashboard/update-stock/:id", products.updateProductStock);
 
-    // mount the router to the main app on the specified path
-    app.use('/', router)
-}
+	// update product infos from dashboard
+	router.put("/dashboard/update-product/:id", products.updateProductInfo);
 
-export default productRoutes
+	// create a new product
+	router.post("/dashboard/new-product", products.postNewProduct);
+
+	// mount the router to the main app on the specified path
+	app.use("/", router);
+};
+
+export default productRoutes;
