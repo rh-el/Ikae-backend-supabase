@@ -3,6 +3,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/user.model";
 
+// Création d'un nouvel utilisateur
 const postNewUser = (req: Request, res: Response) => {
 	if (!req.body) {
 		res.status(400).send({
@@ -16,40 +17,39 @@ const postNewUser = (req: Request, res: Response) => {
 		email: req.body.email,
 		password: req.body.password,
 	});
-
-	User.postNewUser(newUser, (err, data) => {
-		if (err) {
-			res.status(500).send({
-				message: err.message || "Some error occured while creating a new user.",
-			});
+	User.checkUser(newUser.username, newUser.email, (checkUserErr, checkUserData) => {
+		if (checkUserErr) {
+			res.status(409);
 		} else {
-			res.send(
-				"Félicitations ! Une nouvelle utilisatrice a bien été enregistrée"
-			);
+			User.postNewUser(newUser, (newUserErr, newUserData) => {
+				console.log(newUserData)
+				if (newUserErr) {
+					res.status(500).send({
+						message:
+							newUserErr.message ||
+							"Some error occured while creating a new user.",
+					});
+				}
+				res.send(generateToken(newUser.username));
+			});
 		}
 	});
 };
 
-const getTest = (req: Request, res: Response) => {
-	res.send("Vous êtes authentifiée.");
-};
-
-const postToken = (req: Request, res: Response) => {
+const generateToken = (username: string) => {
 	dotenv.config();
-	// vérifier que l'utilisateur existe
-	// s'il existe :
-	const username = req.body.username;
 	const token = jwt.sign(
 		{ username: username },
 		process.env.TOKEN_SECRET as string,
 		{ expiresIn: "2 days" }
 	);
+	return token;
+};
 
-	res.json(token);
-	// else :
-	// res.status(403)
+// Récupération du token de l'utilisateur pour le login
+const getTest = (req: Request, res: Response) => {
+	res.send("Vous êtes authentifiée.");
 };
 
 exports.getTest = getTest;
-exports.postToken = postToken;
 exports.postNewUser = postNewUser;

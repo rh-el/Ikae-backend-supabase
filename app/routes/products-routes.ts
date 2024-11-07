@@ -42,8 +42,6 @@ const productRoutes = (app: Express) => {
 
 	router.get("/login", authenticateToken, users.getTest);
 
-	router.post("/register", users.postToken);
-
 	router.post("/new-user", users.postNewUser);
 
 	// mount the router to the main app on the specified path
