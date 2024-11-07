@@ -17,9 +17,10 @@ export function authenticateToken(req: Request, res: Response, next: any) {
     console.log(err);
 
     if (err) return res.sendStatus(403);
-
+    
     (req as AuthenticatedRequest).user = user
 
     next()
+
   })
 }

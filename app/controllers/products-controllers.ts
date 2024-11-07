@@ -160,7 +160,7 @@ const getTest = (req: Request, res: Response) => {
     res.send("Vous êtes authentifiée.")
 }
 
-const getToken = (req: Request, res: Response) => {
+const postToken = (req: Request, res: Response) => {
     dotenv.config()
     // vérifier que l'utilisateur existe
     // s'il existe :
@@ -182,4 +182,4 @@ exports.getAllProductsDashboard = getAllProductsDashboard
 exports.postNewProduct = postNewProduct
 exports.updateProductInfo = updateProductInfo
 exports.getTest = getTest
-exports.getToken = getToken
+exports.postToken = postToken

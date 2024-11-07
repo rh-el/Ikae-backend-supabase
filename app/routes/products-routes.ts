@@ -37,9 +37,9 @@ const productRoutes = (app: Express) => {
 	// create a new product
 	router.post("/dashboard/new-product", products.postNewProduct);
 
-    router.get("/authentication", authenticateToken, products.getTest);
+    router.get("/login", authenticateToken, products.getTest);
 
-    router.post("/register", products.getToken);
+    router.post("/register", products.postToken);
 
 	// mount the router to the main app on the specified path
 	app.use("/", router);
