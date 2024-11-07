@@ -1,6 +1,8 @@
 import { Request, Response } from "express"
 import Product from "../models/product.model"
 import { get } from "http"
+import jwt from 'jsonwebtoken'
+import dotenv from 'dotenv'
 
 // defines middleware getAll and assign it the getAll method from Product
 const getAllProducts = (req: Request, res: Response) => {
@@ -154,6 +156,22 @@ const updateProductInfo = (req: Request, res: Response) => {
     })
 }
 
+const getTest = (req: Request, res: Response) => {
+    res.send("Vous êtes authentifiée.")
+}
+
+const getToken = (req: Request, res: Response) => {
+    dotenv.config()
+    // vérifier que l'utilisateur existe
+    // s'il existe :
+    const username = req.body.username;
+    const token = jwt.sign( {username: username}, process.env.TOKEN_SECRET as string, { expiresIn: '2 days' })
+
+    res.json(token);
+
+    // else : 
+    // res.status(403)
+}
 
 exports.getAllProducts = getAllProducts
 exports.getProduct = getProduct
@@ -163,3 +181,5 @@ exports.getConfirmation = getConfirmation
 exports.getAllProductsDashboard = getAllProductsDashboard
 exports.postNewProduct = postNewProduct
 exports.updateProductInfo = updateProductInfo
+exports.getTest = getTest
+exports.getToken = getToken

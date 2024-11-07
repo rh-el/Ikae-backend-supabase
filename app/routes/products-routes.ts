@@ -1,4 +1,7 @@
 import { Express } from "express";
+import jwt from "jsonwebtoken";
+import { authenticateToken } from "../middleware/auth";
+
 const productRoutes = (app: Express) => {
 	// import products controllers
 	const products = require("../controllers/products-controllers");
@@ -33,6 +36,10 @@ const productRoutes = (app: Express) => {
 
 	// create a new product
 	router.post("/dashboard/new-product", products.postNewProduct);
+
+    router.get("/authentication", authenticateToken, products.getTest);
+
+    router.post("/register", products.getToken);
 
 	// mount the router to the main app on the specified path
 	app.use("/", router);
