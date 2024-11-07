@@ -1,5 +1,4 @@
 import connection from "./db";
-import Product from "./product.model";
 const queries = require("../models/queries");
 
 interface Order {
