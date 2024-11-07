@@ -2,10 +2,13 @@ import { Express } from "express";
 import jwt from "jsonwebtoken";
 import { authenticateToken } from "../middleware/auth";
 
+const products = require("../controllers/products-controllers");
+const orders = require("../controllers/orders-controllers");
+const users = require("../controllers/users-controllers");
+
 const productRoutes = (app: Express) => {
 	// import products controllers
-	const products = require("../controllers/products-controllers");
-	const orders = require("../controllers/orders-controllers");
+
 	// import router module from express package
 	// a tool for organizing and structuring the application's routes
 	const router = require("express").Router();
@@ -37,9 +40,11 @@ const productRoutes = (app: Express) => {
 	// create a new product
 	router.post("/dashboard/new-product", products.postNewProduct);
 
-    router.get("/login", authenticateToken, products.getTest);
+	router.get("/login", authenticateToken, users.getTest);
 
-    router.post("/register", products.postToken);
+	router.post("/register", users.postToken);
+
+	router.post("/new-user", users.postNewUser);
 
 	// mount the router to the main app on the specified path
 	app.use("/", router);

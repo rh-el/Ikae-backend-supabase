@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import Order from "../models/order.model";
-import { get } from "http";
 
 const postNewOrder = (req: Request, res: Response) => {
 	if (!req.body) {

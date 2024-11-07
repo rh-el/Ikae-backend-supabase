@@ -107,6 +107,11 @@ const postNewOrderItemQuery = () => {
     `;
 };
 
+const postNewUserQuery = () => {
+	return `
+    INSERT INTO users(firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)`;
+};
+
 exports.getAllProductsQuery = getAllProductsQuery;
 exports.getProductInfoQuery = getProductInfoQuery;
 exports.deleteProductQuery = deleteProductQuery;
@@ -116,3 +121,4 @@ exports.postNewProductQuery = postNewProductQuery;
 exports.updateProductInfoQuery = updateProductInfoQuery;
 exports.postNewOrderQuery = postNewOrderQuery;
 exports.postNewOrderItemQuery = postNewOrderItemQuery;
+exports.postNewUserQuery = postNewUserQuery;
