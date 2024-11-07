@@ -18,15 +18,15 @@ const postNewUser = (req: Request, res: Response) => {
 	});
 
 	User.postNewUser(newUser, (err, data) => {
-		if (err) {
-			res.status(500).send({
-				message: err.message || "Some error occured while creating a new user.",
-			});
-		} else {
-			res.send(
-				"Félicitations ! Une nouvelle utilisatrice a bien été enregistrée"
-			);
-		}
+		// if (err) {
+		// 	res.status(500).send({
+		// 		message: err.message || "Some error occured while creating a new user.",
+		// 	});
+		// } else {
+		// 	res.send(
+		// 		"Félicitations ! Une nouvelle utilisatrice a bien été enregistrée"
+		// 	);
+		// }
 	});
 };
 
