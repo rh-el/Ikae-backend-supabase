@@ -123,6 +123,15 @@ const postNewUserQuery = () => {
     INSERT INTO users(firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)`;
 };
 
+const checkUserQuery = (username: string, email: string) => {
+    return `
+    SELECT *
+    FROM users 
+    WHERE username = "${username}"
+    AND email = "${email}"
+    `;
+}
+
 exports.getAllProductsQuery = getAllProductsQuery;
 exports.getProductInfoQuery = getProductInfoQuery;
 exports.deleteProductQuery = deleteProductQuery;
@@ -133,3 +142,4 @@ exports.updateProductInfoQuery = updateProductInfoQuery;
 exports.postNewOrderQuery = postNewOrderQuery;
 exports.postNewOrderItemQuery = postNewOrderItemQuery;
 exports.postNewUserQuery = postNewUserQuery;
+exports.checkUserQuery = checkUserQuery;

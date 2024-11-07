@@ -14,6 +14,12 @@ class User {
 		newUser: User,
 		result: (err: Error | null, data: User | null) => void
 	) => void;
+	static checkUser: (
+		username: string,
+		email: string,
+		result: (err: Error | null, data: User | null) => void
+	) => void;
+
 	constructor(user: any) {
 		this.firstname = user.firstname;
 		this.lastname = user.lastname;
@@ -51,6 +57,28 @@ User.postNewUser = (
 			result(null, res);
 		}
 	);
+};
+
+// Vérifier si l'utilisateur existe
+User.checkUser = (
+	username: string,
+	email: string,
+	result: (err: Error | null, data: User | null) => void
+) => {
+	const query = queries.checkUserQuery(username, email);
+
+	connection.query(query, [username, email], (err: Error, res: any) => {
+		// error handler
+		if (err) {
+			console.log("error: ", err);
+			result(err, null);
+			return;
+		}
+		// returns query result
+		console.log(err);
+		console.log(res);
+		result(null, res);
+	});
 };
 
 export default User;
