@@ -32,9 +32,14 @@ const getProduct = (req: Request, res: Response) => {
 					"Some error occured while getting product info with id : ${req.params.id}.",
 			});
 			console.log("An error occured while retrieving product info.");
-		} else {
-			res.send(data);
-		}
+		} 
+        
+        if (data?.length !== undefined && data.length > 0) {
+                const formattedImageLinks = JSON.parse(data[0].image_links);
+                data[0].image_links = formattedImageLinks;            
+        }
+		res.send(data);
+		
 	});
 };
 

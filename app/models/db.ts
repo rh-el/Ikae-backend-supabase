@@ -1,14 +1,16 @@
 const mysql = require("mysql2");
-import dbConfig from "../config/db.config";
 import { ErrorRequestHandler } from "express";
+import dotenv from 'dotenv'
+
+dotenv.config();
 
 // creates db connection
 const connection = mysql.createConnection({
-    host: dbConfig.host,
-    port: dbConfig.port,
-    user: dbConfig.user,
-    password: dbConfig.password, 
-    database: dbConfig.database
+    host: process.env.HOST,
+    port: process.env.PORT,
+    user: process.env.USER,
+    password: '', 
+    database: process.env.DATABASE
 });
 
 // opens the connection

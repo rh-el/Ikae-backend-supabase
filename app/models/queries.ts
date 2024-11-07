@@ -26,10 +26,21 @@ const getAllProductsQuery = () => {
 
 const getProductInfoQuery = (productID: string) => {
 	return `
-    SELECT
-        *
-    FROM
-        products WHERE id = ${productID}`;
+    SELECT 
+    p.*,
+    CASE 
+        WHEN COUNT(i.image_link) > 0 
+        THEN CONCAT('[', GROUP_CONCAT(CONCAT('"', i.image_link, '"') SEPARATOR ', '), ']')
+        ELSE NULL
+    END AS image_links
+FROM 
+    products p
+LEFT JOIN
+    images i ON p.id = i.product_id
+WHERE 
+    p.id = ${productID}
+GROUP BY
+    p.id;`;
 };
 
 const deleteProductQuery = (productID: string) => {

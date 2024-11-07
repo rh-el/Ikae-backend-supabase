@@ -20,7 +20,7 @@ class Product {
 	) => void;
 	static getProductInfo: (
 		productID: string,
-		result: (err: Error | null, data: Product | null) => void
+		result: (err: Error | null, data: any | null) => void
 	) => void;
 	static getConfirmationInfo: (
 		orderID: string,
