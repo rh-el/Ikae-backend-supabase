@@ -40,8 +40,11 @@ const productRoutes = (app: Express) => {
 	// create a new product
 	router.post("/dashboard/new-product", products.postNewProduct);
 
-	router.get("/login", authenticateToken, users.getTest);
+	// test route for token check middleware
+	// not good - TODO
+	router.get("/test", authenticateToken, users.getTest);
 
+	// create a new user, return token
 	router.post("/register", users.postNewUser);
 
 	// mount the router to the main app on the specified path
