@@ -7,13 +7,6 @@ app.use(cors());
 app.use(express.json());
 
 
-// creates a GET request endpoint on the root path
-// returns a message
-// app.get('/', (req: Request, res: Response) => {    
-//     res.send('coucou')
-//     }
-// )
-
 productRoutes(app)
 
 app.use(express.static('app'))
