@@ -3,14 +3,15 @@ import { ErrorRequestHandler } from "express";
 import dotenv from 'dotenv'
 
 dotenv.config();
-console.log(process.env.USER)
-console.log(process.env.DATABASE);
+
+console.log(process.env.LOGIN);
+
 
 // creates db connection
 const connection = mysql.createConnection({
 	host: process.env.HOST,
 	port: process.env.PORT,
-	user: process.env.USER,
+	user: process.env.LOGIN,
 	password: "",
 	database: process.env.DATABASE,
 });
