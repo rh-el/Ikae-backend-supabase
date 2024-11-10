@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import Product from "../models/product.model";
 
-// defines middleware getAll and assign it the getAll method from Product
+// get all products from db
+// format the response object image_links field for easier client side handling
 const getAllProducts = (req: Request, res: Response) => {
 	Product.getAll((err, data) => {
 		if (err) {
@@ -23,6 +24,8 @@ const getAllProducts = (req: Request, res: Response) => {
 	});
 };
 
+// get all informations of a single product
+// format the response object image_links field for easier client side handling
 const getProduct = (req: Request, res: Response) => {
 	Product.getProductInfo(req.params.id, (err, data) => {
 		if (err) {
@@ -43,6 +46,10 @@ const getProduct = (req: Request, res: Response) => {
 	});
 };
 
+// get all products from db
+// exactly the same as getAllProducts for now
+// can be used if informations needed in dashboard differ from those used in home
+// if so, new backend dream team has to create a new Product method :)
 const getAllProductsDashboard = (req: Request, res: Response) => {
 	Product.getAll((err, data) => {
 		if (err) {
@@ -57,6 +64,9 @@ const getAllProductsDashboard = (req: Request, res: Response) => {
 	});
 };
 
+// get order confirmation information
+// wondering why it's not in order-controllers as I am writing this comment
+// not functional at the moment, fully functional client login/registration needed first
 const getConfirmation = (req: Request, res: Response) => {
 	Product.getConfirmationInfo(req.params.id, (err, data) => {
 		if (err) {
@@ -74,6 +84,9 @@ const getConfirmation = (req: Request, res: Response) => {
 	});
 };
 
+// delete a product from the database
+// this will completely delete the product and all its infos
+// prefer update its in_stock field with the function below
 const deleteProduct = (req: Request, res: Response) => {
 	Product.deleteProductInfo(req.params.id, (err, data) => {
 		if (err) {
@@ -87,6 +100,9 @@ const deleteProduct = (req: Request, res: Response) => {
 	});
 };
 
+// update the in_stock field of a product
+// can only switch to false for now
+// may need to handle switch to true 
 const updateProductStock = (req: Request, res: Response) => {
 	Product.updateProductStock(req.params.id, (err, data) => {
 		if (err) {
@@ -99,6 +115,10 @@ const updateProductStock = (req: Request, res: Response) => {
 		}
 	});
 };
+
+// create a new product based on the product constructor
+// does not handle images upload for now
+// no idea how to do it for now :|
 const postNewProduct = (req: Request, res: Response) => {
 	if (!req.body) {
 		res.status(400).send({
@@ -129,6 +149,7 @@ const postNewProduct = (req: Request, res: Response) => {
 	});
 };
 
+// update a product informations
 const updateProductInfo = (req: Request, res: Response) => {
 	if (!req.body) {
 		res.status(400).send({

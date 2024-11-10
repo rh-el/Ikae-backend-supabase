@@ -1,14 +1,15 @@
-import express, { Express, Request, Response } from "express";
-import productRoutes from "./app/routes/products-routes";
+import express, { Express } from "express";
+import routes from "./app/routes/routes";
 
 const cors = require('cors')
 const app: Express = express();
 app.use(cors());
 app.use(express.json());
 
+// call the router module with the express server
+routes(app)
 
-productRoutes(app)
-
+// used to serve images stored locally 
 app.use(express.static('app'))
 app.use('/img', express.static('img'))
 

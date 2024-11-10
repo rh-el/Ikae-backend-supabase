@@ -29,7 +29,7 @@ class User {
 	}
 }
 
-// création user et insertion de ses données dans la BDD
+// creates a new user
 User.postNewUser = (
 	newUser: User,
 	result: (err: Error | null, data: User | null) => void
@@ -59,7 +59,7 @@ User.postNewUser = (
 	);
 };
 
-// Vérifier si l'utilisateur existe
+// check if user already exists - based on email and username
 User.checkUser = (
 	username: string,
 	email: string,

@@ -58,7 +58,7 @@ class Product {
 	}
 }
 
-// defines getAll method for Product
+// get all products from products table
 Product.getAll = (
 	result: (err: Error | null, data: Product[] | null) => void
 ) => {
@@ -79,6 +79,7 @@ Product.getAll = (
 	});
 };
 
+// get all informations of a specific product
 Product.getProductInfo = (
 	productID: string,
 	result: (err: Error | null, data: Product | null) => void
@@ -98,6 +99,7 @@ Product.getProductInfo = (
 	});
 };
 
+// delete a product from the database - not intended to be used for now, prefer use updateProductStock
 Product.deleteProductInfo = (
 	productID: string,
 	result: (err: Error | null, data: Product | null) => void
@@ -117,6 +119,7 @@ Product.deleteProductInfo = (
 	});
 };
 
+// update a product 'in_stock' field to false
 Product.updateProductStock = (
 	productID: string,
 	result: (err: Error | null, data: Product | null) => void
@@ -136,6 +139,7 @@ Product.updateProductStock = (
 	});
 };
 
+// create a new product
 Product.postNewProduct = (
 	newProduct: Product,
 	result: (err: Error | null, data: Product | null) => void
@@ -167,6 +171,7 @@ Product.postNewProduct = (
 	);
 };
 
+// get informations (price, products id, user_id, ..) of a specific order
 Product.getConfirmationInfo = (
 	orderID: string,
 	result: (err: Error | null, data: Product[] | null) => void
@@ -184,6 +189,7 @@ Product.getConfirmationInfo = (
 	});
 };
 
+// update informations of a product
 Product.updateProductInfo = (
 	product: Product,
 	productID: string,

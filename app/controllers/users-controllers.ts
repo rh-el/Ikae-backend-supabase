@@ -3,7 +3,8 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/user.model";
 
-// Création d'un nouvel utilisateur
+// create a new user, checking first if he already exists in db
+// return a token 
 const postNewUser = (req: Request, res: Response) => {
 	if (!req.body) {
 		res.status(400).send({
@@ -36,6 +37,7 @@ const postNewUser = (req: Request, res: Response) => {
 	});
 };
 
+// generate a new token associated to a username
 const generateToken = (username: string) => {
 	dotenv.config();
 	const token = jwt.sign(
@@ -46,7 +48,7 @@ const generateToken = (username: string) => {
 	return token;
 };
 
-// Récupération du token de l'utilisateur pour le login
+// wip - should check token/user relation validity 
 const getTest = (req: Request, res: Response) => {
 	res.send("Vous êtes authentifiée.");
 };

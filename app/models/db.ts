@@ -2,6 +2,7 @@ const mysql = require("mysql2");
 import { ErrorRequestHandler } from "express";
 import dotenv from 'dotenv'
 
+// get .env config, stored natively in process.env
 dotenv.config();
 
 console.log(process.env.LOGIN);

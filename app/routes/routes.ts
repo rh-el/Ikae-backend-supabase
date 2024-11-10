@@ -1,5 +1,4 @@
 import { Express } from "express";
-import jwt from "jsonwebtoken";
 import { authenticateToken } from "../middleware/auth";
 
 const products = require("../controllers/products-controllers");
@@ -7,7 +6,6 @@ const orders = require("../controllers/orders-controllers");
 const users = require("../controllers/users-controllers");
 
 const productRoutes = (app: Express) => {
-	// import products controllers
 
 	// import router module from express package
 	// a tool for organizing and structuring the application's routes

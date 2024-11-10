@@ -1,6 +1,8 @@
 import { Request, Response } from "express";
 import Order from "../models/order.model";
 
+// create a new order in order table
+// then create a new entry in order_items table for each product with the associated order_id
 const postNewOrder = (req: Request, res: Response) => {
 	if (!req.body) {
 		res.status(400).send({

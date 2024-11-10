@@ -26,6 +26,7 @@ class Order {
 	}
 }
 
+// creates a new order
 Order.postNewOrder = (
 	newOrder: Order,
 	result: (err: Error | null, data: Order | null) => void
@@ -47,6 +48,7 @@ Order.postNewOrder = (
 	);
 };
 
+// creates a new line in db associating a product_id with its order_id
 Order.postNewOrderItem = (
 	order_id: number,
 	product_id: number,

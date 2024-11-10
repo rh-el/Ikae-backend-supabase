@@ -6,6 +6,7 @@ export interface AuthenticatedRequest extends Request {
     user: JwtPayload | null;
 }
 
+// check validity of a token
 export function authenticateToken(req: Request, res: Response, next: any) {
   dotenv.config();
   const authHeader = req.headers['authorization']
