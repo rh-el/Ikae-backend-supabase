@@ -23,6 +23,10 @@ class User {
 		email: string | string[],
 		result: (err: Error | null, data: User[] | null) => void
 	) => void;
+	static getIdFromEmail: (
+		email: string,
+		result: (err: Error | null, data: User[] | null) => void
+	) => void;
 
 	constructor(user: any) {
 		this.firstname = user.firstname;
@@ -104,5 +108,22 @@ User.login = (
 		result(null, res);
 		});
 };
+
+User.getIdFromEmail = (
+	userEmail: string,
+	result: (err: Error | null, data: User[] | null) => void 
+) => {
+	const userId = queries.getUserIdQuery(userEmail)
+	connection.query(userId, ((err: Error, res: User[]) => {
+		if (err) {
+			console.log("error: ", err);
+			result(err, null);
+			return;
+		}
+		// returns query result
+		console.log("user id: ", res);
+		result(null, res);
+	}))
+}
 
 export default User;

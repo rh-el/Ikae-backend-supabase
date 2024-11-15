@@ -5,7 +5,7 @@ interface Order {
 	order_id: number;
 	user_id: number;
 	total_price: number;
-	product_id: number[];
+	insertId: number;
 }
 
 class Order {
@@ -22,7 +22,6 @@ class Order {
 		this.order_id = order.order_id;
 		this.user_id = order.user_id;
 		this.total_price = order.total_price;
-		this.product_id = order.product_id;
 	}
 }
 
@@ -43,7 +42,7 @@ Order.postNewOrder = (
 				result(err, null);
 				return;
 			}
-			result(null, newOrder);
+			result(null, res);
 		}
 	);
 };

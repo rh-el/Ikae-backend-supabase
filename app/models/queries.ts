@@ -143,6 +143,13 @@ const checkUserEmailQuery = (email: string) => {
     `;
 }
 
+const getUserIdQuery = (email: string) => {
+    return `
+    SELECT id
+    FROM users
+    WHERE email= "${email}"`
+}
+
 exports.getAllProductsQuery = getAllProductsQuery;
 exports.getProductInfoQuery = getProductInfoQuery;
 exports.deleteProductQuery = deleteProductQuery;
@@ -155,3 +162,4 @@ exports.postNewOrderItemQuery = postNewOrderItemQuery;
 exports.postNewUserQuery = postNewUserQuery;
 exports.checkUserQuery = checkUserQuery;
 exports.checkUserEmailQuery = checkUserEmailQuery;
+exports.getUserIdQuery = getUserIdQuery;
