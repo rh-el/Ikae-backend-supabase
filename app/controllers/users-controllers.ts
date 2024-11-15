@@ -75,11 +75,7 @@ const login = (req: Request, res: Response) => {
 		res.send(JSON.stringify(user.password))
 	})
 	}
-	
-	
 	console.log(req.headers)
-	
-	
 };
 
 const returnToken = (req: Request, res: Response) => { 
