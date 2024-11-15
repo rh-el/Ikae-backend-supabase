@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/user.model";
+import { log } from "console";
 
 const queries = require("../models/queries");
 
@@ -71,7 +72,7 @@ const login = (req: Request, res: Response) => {
       return;
     }
 		const user = data[0];
-			res.send(user.password)
+		res.send(JSON.stringify(user.password))
 	})
 	}
 	
@@ -87,7 +88,7 @@ const returnToken = (req: Request, res: Response) => {
 	} else { 
 		const email = req.headers.email
 		console.log('EMAIL', email)
-		res.send(generateToken(email));
+		res.send(JSON.stringify(generateToken(email)));
 		}
 }
 
