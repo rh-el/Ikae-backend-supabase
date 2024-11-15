@@ -3,6 +3,9 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import User from "../models/user.model";
 
+const queries = require("../models/queries");
+
+
 // create a new user, checking first if he already exists in db
 // return a token 
 const postNewUser = (req: Request, res: Response) => {
@@ -16,11 +19,12 @@ const postNewUser = (req: Request, res: Response) => {
 		lastname: req.body.lastname,
 		username: req.body.username,
 		email: req.body.email,
-		password: req.body.password,
+		password: req.body.password
 	});
 	User.checkUser(newUser.username, newUser.email, (checkUserErr, checkUserData) => {
 		if (checkUserErr) {
 			res.status(409);
+			console.log('COUCOU y a une erreur')
 		} else {
 			User.postNewUser(newUser, (newUserErr, newUserData) => {
 				console.log(newUserData)
@@ -31,17 +35,17 @@ const postNewUser = (req: Request, res: Response) => {
 							"Some error occured while creating a new user.",
 					});
 				}
-				res.send(generateToken(newUser.username));
+				res.send(generateToken(newUser.email));
 			});
 		}
 	});
 };
 
 // generate a new token associated to a username
-const generateToken = (username: string) => {
+const generateToken = (userEmail: string | string[]) => {
 	dotenv.config();
 	const token = jwt.sign(
-		{ username: username },
+		{ email: userEmail },
 		process.env.TOKEN_SECRET as string,
 		{ expiresIn: "2 days" }
 	);
@@ -49,9 +53,44 @@ const generateToken = (username: string) => {
 };
 
 // wip - should check token/user relation validity 
-const getTest = (req: Request, res: Response) => {
-	res.send("Vous êtes authentifiée.");
+const login = (req: Request, res: Response) => {
+	if (req.headers.email == undefined) { 
+		console.error("Pas d'email")
+	} else { 
+		const email = req.headers.email
+		console.log('EMAIL', email)
+		User.login(email, (err, data) => { 
+			if (err) {
+      console.error('Erreur lors du login:', err);
+      res.status(500).json({ error: "Erreur lors du login" });
+      return;
+    }
+
+    if (!data || data.length === 0) {
+      res.status(404).json({ error: "Utilisateur non trouvé" });
+      return;
+    }
+		const user = data[0];
+			res.send(user.password)
+	})
+	}
+	
+	
+	console.log(req.headers)
+	
+	
 };
 
-exports.getTest = getTest;
+const returnToken = (req: Request, res: Response) => { 
+	if (req.headers.email == undefined) { 
+		console.error("Pas d'email")
+	} else { 
+		const email = req.headers.email
+		console.log('EMAIL', email)
+		res.send(generateToken(email));
+		}
+}
+
+exports.login = login;
+exports.returnToken = returnToken;
 exports.postNewUser = postNewUser;

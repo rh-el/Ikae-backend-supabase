@@ -3,23 +3,24 @@ import { Request, Response } from 'express';
 import dotenv from 'dotenv';
 
 export interface AuthenticatedRequest extends Request {
-    user: JwtPayload | null;
+    email: JwtPayload | null;
 }
 
 // check validity of a token
 export function authenticateToken(req: Request, res: Response, next: any) {
   dotenv.config();
+
   const authHeader = req.headers['authorization']
-  const token = authHeader && authHeader.split(' ')[1]
+  const token = authHeader?.split(' ')[1]
 
   if (token == null) return res.sendStatus(401)
 
-  jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, user: any) => {
-    console.log(err);
-
+  jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, email: any) => {
+    console.log('USER', email);
+    
     if (err) return res.sendStatus(403);
     
-    (req as AuthenticatedRequest).user = user
+    (req as AuthenticatedRequest).email = email
 
     next()
 

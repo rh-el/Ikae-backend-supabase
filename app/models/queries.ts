@@ -114,13 +114,14 @@ const postNewOrderQuery = () => {
 
 const postNewOrderItemQuery = () => {
 	return ` 
-    INSERT INTO order_items(order_id, product_id) VALUES (?,?);
+    INSERT INTO order_items (order_id, product_id) VALUES (?,?);
     `;
 };
 
 const postNewUserQuery = () => {
-	return `
-    INSERT INTO users(firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?)`;
+    return `
+    INSERT INTO users (firstname, lastname, username, email, password) VALUES (?, ?, ?, ?, ?);
+    `;
 };
 
 const checkUserQuery = (username: string, email: string) => {
@@ -129,6 +130,16 @@ const checkUserQuery = (username: string, email: string) => {
     FROM users 
     WHERE username = "${username}"
     AND email = "${email}"
+    `;
+}
+
+
+const checkUserEmailQuery = (email: string) => {
+    return `
+    SELECT *
+    FROM users 
+    WHERE email = "${email}" 
+    LIMIT 1
     `;
 }
 
@@ -143,3 +154,4 @@ exports.postNewOrderQuery = postNewOrderQuery;
 exports.postNewOrderItemQuery = postNewOrderItemQuery;
 exports.postNewUserQuery = postNewUserQuery;
 exports.checkUserQuery = checkUserQuery;
+exports.checkUserEmailQuery = checkUserEmailQuery;

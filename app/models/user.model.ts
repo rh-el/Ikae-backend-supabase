@@ -19,6 +19,10 @@ class User {
 		email: string,
 		result: (err: Error | null, data: User | null) => void
 	) => void;
+	static login: (
+		email: string | string[],
+		result: (err: Error | null, data: User[] | null) => void
+	) => void;
 
 	constructor(user: any) {
 		this.firstname = user.firstname;
@@ -67,7 +71,7 @@ User.checkUser = (
 ) => {
 	const query = queries.checkUserQuery(username, email);
 
-	connection.query(query, [username, email], (err: Error, res: any) => {
+	connection.query(query, [username, email], (err: Error, res: User) => {
 		// error handler
 		if (err) {
 			console.log("error: ", err);
@@ -79,6 +83,26 @@ User.checkUser = (
 		console.log(res);
 		result(null, res);
 	});
+};
+
+User.login = (
+	userEmail: string | string[],
+	result: (err: Error | null, data: User[] | null) => void 
+	) => {
+		//Verifier que le mail existe dans la bdd
+		//S'il n'existe pas, déclencher une erreur
+		const matchUser = queries.checkUserEmailQuery(userEmail)
+		connection.query(matchUser, (err: Error, res: User[]) => {
+		// error handler
+		if (err) {
+			console.log("error: ", err);
+			result(err, null);
+			return;
+		}
+		// returns query result
+		console.log("✅ user debug: ", res);
+		result(null, res);
+		});
 };
 
 export default User;

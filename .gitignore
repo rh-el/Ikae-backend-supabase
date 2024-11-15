@@ -3,3 +3,5 @@
 /app/config/
 
 /.env
+
+/test

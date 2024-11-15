@@ -10,7 +10,7 @@ app.use(express.json());
 routes(app)
 
 // used to serve images stored locally 
-app.use(express.static('app'))
+//app.use(express.static('app'))
 app.use('/img', express.static('img'))
 
 // launch request listener on port 3000
