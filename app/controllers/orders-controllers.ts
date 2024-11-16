@@ -63,7 +63,7 @@ const postNewOrder = async (req: Request, res: Response) => {
 						message: err.message || "Some error occured while posting a new order.",
 					});
 				} else {
-					
+
 					// create order items with order_id and productid[]
 					req.body.products_id.forEach((productId: any) => {
 						
@@ -87,33 +87,5 @@ const postNewOrder = async (req: Request, res: Response) => {
 		}
 })
 }
-
-	// Order.postNewOrder(newOrder, (err, data) => {
-	// 	if (err) {
-	// 		res.status(500).send({
-	// 			message: err.message || "Some error occured while posting a new order.",
-	// 		});
-	// 	} else {
-	// 		for (let i = 0; i < newOrder.product_id.length; i++) {
-	// 			Order.postNewOrderItem(
-	// 				data!.order_id,
-	// 				newOrder.product_id[i],
-	// 				(err, data) => {
-	// 					if (err) {
-	// 						res.status(500).send({
-								// message:
-								// 	err.message ||
-								// 	"Some error occured while posting a new order item.",
-	// 						});
-	// 					} else {
-	// 						res.end();
-	// 					}
-	// 				}
-	// 			);
-	// 		}
-	// 	}
-	// });
-// };
-
 
 exports.postNewOrder = postNewOrder;

@@ -49,7 +49,7 @@ INSERT INTO `images` (
 VALUES (
     1,
     6,
-    'http://192.168.5.185:3000/img/table-chene-marron.webp',
+    'http://localhost:3000/img/table-chene-marron.webp',
     'an image of a brown oak table',
     '2024-11-05 14:14:02',
     '2024-11-05 14:14:02'
@@ -57,7 +57,7 @@ VALUES (
   (
     2,
     6,
-    'http://192.168.5.185:3000/img/table-chene-marron-1.webp',
+    'http://localhost:3000/img/table-chene-marron-1.webp',
     'an image of a brown oak table',
     '2024-11-05 14:14:02',
     '2024-11-05 14:14:02'
@@ -65,7 +65,7 @@ VALUES (
   (
     3,
     6,
-    'http://192.168.5.185:3000/img/table-chene-marron-2.webp',
+    'http://localhost:3000/img/table-chene-marron-2.webp',
     'an image of a brown oak table',
     '2024-11-05 14:14:02',
     '2024-11-05 14:14:02'
@@ -73,7 +73,7 @@ VALUES (
   (
     4,
     6,
-    'http://192.168.5.185:3000/img/table-chene-marron-3.webp',
+    'http://localhost:3000/img/table-chene-marron-3.webp',
     'an image of a brown oak table',
     '2024-11-05 14:14:02',
     '2024-11-05 14:14:02'
@@ -81,7 +81,7 @@ VALUES (
   (
     5,
     7,
-    'http://192.168.5.185:3000/img/canape-cuir-noir.webp',
+    'http://localhost:3000/img/canape-cuir-noir.webp',
     'an image of a black sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -89,7 +89,7 @@ VALUES (
   (
     6,
     7,
-    'http://192.168.5.185:3000/img/canape-cuir-noir-1.webp',
+    'http://localhost:3000/img/canape-cuir-noir-1.webp',
     'an image of a black sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -97,7 +97,7 @@ VALUES (
   (
     7,
     7,
-    'http://192.168.5.185:3000/img/canape-cuir-noir-2.webp',
+    'http://localhost:3000/img/canape-cuir-noir-2.webp',
     'an image of a black sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -105,7 +105,7 @@ VALUES (
   (
     8,
     7,
-    'http://192.168.5.185:3000/img/canape-cuir-noir-3.webp',
+    'http://localhost:3000/img/canape-cuir-noir-3.webp',
     'an image of a black sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -113,7 +113,7 @@ VALUES (
   (
     9,
     8,
-    'http://192.168.5.185:3000/img/lampe-chevet-blanc.webp',
+    'http://localhost:3000/img/lampe-chevet-blanc.webp',
     'an image of a white lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -121,7 +121,7 @@ VALUES (
   (
     10,
     8,
-    'http://192.168.5.185:3000/img/lampe-chevet-blanc-1.webp',
+    'http://localhost:3000/img/lampe-chevet-blanc-1.webp',
     'an image of a white lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -129,7 +129,7 @@ VALUES (
   (
     11,
     8,
-    'http://192.168.5.185:3000/img/lampe-chevet-blanc-2.webp',
+    'http://localhost:3000/img/lampe-chevet-blanc-2.webp',
     'an image of a white lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -137,7 +137,7 @@ VALUES (
   (
     12,
     8,
-    'http://192.168.5.185:3000/img/lampe-chevet-blanc-3.webp',
+    'http://localhost:3000/img/lampe-chevet-blanc-3.webp',
     'an image of a white lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -145,7 +145,7 @@ VALUES (
   (
     13,
     9,
-    'http://192.168.5.185:3000/img/chaise-acier-gris.webp',
+    'http://localhost:3000/img/chaise-acier-gris.webp',
     'an image of a steel chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -153,7 +153,7 @@ VALUES (
   (
     14,
     9,
-    'http://192.168.5.185:3000/img/chaise-acier-gris-1.jfif',
+    'http://localhost:3000/img/chaise-acier-gris-1.jfif',
     'an image of a steel chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -161,7 +161,7 @@ VALUES (
   (
     15,
     9,
-    'http://192.168.5.185:3000/img/chaise-acier-gris-2.jfif',
+    'http://localhost:3000/img/chaise-acier-gris-2.jfif',
     'an image of a steel chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -169,7 +169,7 @@ VALUES (
   (
     16,
     9,
-    'http://192.168.5.185:3000/img/chaise-acier-gris-3.jfif',
+    'http://localhost:3000/img/chaise-acier-gris-3.jfif',
     'an image of a steel chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -177,7 +177,7 @@ VALUES (
   (
     17,
     10,
-    'http://192.168.5.185:3000/img/fauteuil-tissu-bleu.webp',
+    'http://localhost:3000/img/fauteuil-tissu-bleu.webp',
     'an image of a blue sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -185,7 +185,7 @@ VALUES (
   (
     18,
     10,
-    'http://192.168.5.185:3000/img/fauteuil-tissu-bleu-1.webp',
+    'http://localhost:3000/img/fauteuil-tissu-bleu-1.webp',
     'an image of a blue sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -193,7 +193,7 @@ VALUES (
   (
     19,
     10,
-    'http://192.168.5.185:3000/img/fauteuil-tissu-bleu-2.webp',
+    'http://localhost:3000/img/fauteuil-tissu-bleu-2.webp',
     'an image of a blue sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -201,7 +201,7 @@ VALUES (
   (
     20,
     10,
-    'http://192.168.5.185:3000/img/fauteuil-tissu-bleu-3.webp',
+    'http://localhost:3000/img/fauteuil-tissu-bleu-3.webp',
     'an image of a blue sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -209,7 +209,7 @@ VALUES (
   (
     21,
     11,
-    'http://192.168.5.185:3000/img/armoire-vintage-bois.webp',
+    'http://localhost:3000/img/armoire-vintage-bois.webp',
     'an image of a wooden closet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -217,7 +217,7 @@ VALUES (
   (
     22,
     11,
-    'http://192.168.5.185:3000/img/armoire-vintage-bois-1.webp',
+    'http://localhost:3000/img/armoire-vintage-bois-1.webp',
     'an image of a wooden closet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -225,7 +225,7 @@ VALUES (
   (
     23,
     11,
-    'http://192.168.5.185:3000/img/armoire-vintage-bois-2.webp',
+    'http://localhost:3000/img/armoire-vintage-bois-2.webp',
     'an image of a wooden closet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -233,7 +233,7 @@ VALUES (
   (
     24,
     11,
-    'http://192.168.5.185:3000/img/armoire-vintage-bois-3.webp',
+    'http://localhost:3000/img/armoire-vintage-bois-3.webp',
     'an image of a wooden closet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -241,7 +241,7 @@ VALUES (
   (
     25,
     12,
-    'http://192.168.5.185:3000/img/tapis-marocain-rouge.webp',
+    'http://localhost:3000/img/tapis-marocain-rouge.webp',
     'an image of a red carpet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -249,7 +249,7 @@ VALUES (
   (
     26,
     12,
-    'http://192.168.5.185:3000/img/tapis-marocain-rouge-1.webp',
+    'http://localhost:3000/img/tapis-marocain-rouge-1.webp',
     'an image of a red carpet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -257,7 +257,7 @@ VALUES (
   (
     27,
     12,
-    'http://192.168.5.185:3000/img/tapis-marocain-rouge-2.webp',
+    'http://localhost:3000/img/tapis-marocain-rouge-2.webp',
     'an image of a red carpet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -265,7 +265,7 @@ VALUES (
   (
     28,
     12,
-    'http://192.168.5.185:3000/img/tapis-marocain-rouge-3.webp',
+    'http://localhost:3000/img/tapis-marocain-rouge-3.webp',
     'an image of a red carpet',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -273,7 +273,7 @@ VALUES (
   (
     29,
     13,
-    'http://192.168.5.185:3000/img/chaise-plastique-bleu.webp',
+    'http://localhost:3000/img/chaise-plastique-bleu.webp',
     'an image of a blue chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -281,7 +281,7 @@ VALUES (
   (
     30,
     13,
-    'http://192.168.5.185:3000/img/chaise-plastique-bleu-1.webp',
+    'http://localhost:3000/img/chaise-plastique-bleu-1.webp',
     'an image of a blue chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -289,7 +289,7 @@ VALUES (
   (
     31,
     13,
-    'http://192.168.5.185:3000/img/chaise-plastique-bleu-2.webp',
+    'http://localhost:3000/img/chaise-plastique-bleu-2.webp',
     'an image of a blue chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -297,7 +297,7 @@ VALUES (
   (
     32,
     13,
-    'http://192.168.5.185:3000/img/chaise-plastique-bleu-3.webp',
+    'http://localhost:3000/img/chaise-plastique-bleu-3.webp',
     'an image of a blue chair',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -305,7 +305,7 @@ VALUES (
   (
     33,
     14,
-    'http://192.168.5.185:3000/img/lampe-acier-gris.webp',
+    'http://localhost:3000/img/lampe-acier-gris.webp',
     'an image of a steel lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -313,7 +313,7 @@ VALUES (
   (
     34,
     14,
-    'http://192.168.5.185:3000/img/lampe-acier-gris-1.webp',
+    'http://localhost:3000/img/lampe-acier-gris-1.webp',
     'an image of a steel lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -321,7 +321,7 @@ VALUES (
   (
     35,
     14,
-    'http://192.168.5.185:3000/img/lampe-acier-gris-2.webp',
+    'http://localhost:3000/img/lampe-acier-gris-2.webp',
     'an image of a steel lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -329,7 +329,7 @@ VALUES (
   (
     36,
     14,
-    'http://192.168.5.185:3000/img/lampe-acier-gris-3.webp',
+    'http://localhost:3000/img/lampe-acier-gris-3.webp',
     'an image of a steel lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -337,7 +337,7 @@ VALUES (
   (
     37,
     15,
-    'http://192.168.5.185:3000/img/table-basse-blanc.webp',
+    'http://localhost:3000/img/table-basse-blanc.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -345,7 +345,7 @@ VALUES (
   (
     38,
     15,
-    'http://192.168.5.185:3000/img/table-basse-blanc-1.webp',
+    'http://localhost:3000/img/table-basse-blanc-1.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -353,7 +353,7 @@ VALUES (
   (
     39,
     15,
-    'http://192.168.5.185:3000/img/table-basse-blanc-2.webp',
+    'http://localhost:3000/img/table-basse-blanc-2.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -361,7 +361,7 @@ VALUES (
   (
     40,
     15,
-    'http://192.168.5.185:3000/img/table-basse-blanc-3.webp',
+    'http://localhost:3000/img/table-basse-blanc-3.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -369,7 +369,7 @@ VALUES (
   (
     41,
     16,
-    'http://192.168.5.185:3000/img/fauteuil-cuir-blanc.webp',
+    'http://localhost:3000/img/fauteuil-cuir-blanc.webp',
     'an image of a white sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -377,7 +377,7 @@ VALUES (
   (
     42,
     16,
-    'http://192.168.5.185:3000/img/fauteuil-cuir-blanc-1.webp',
+    'http://localhost:3000/img/fauteuil-cuir-blanc-1.webp',
     'an image of a white sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -385,7 +385,7 @@ VALUES (
   (
     43,
     16,
-    'http://192.168.5.185:3000/img/fauteuil-cuir-blanc-2.webp',
+    'http://localhost:3000/img/fauteuil-cuir-blanc-2.webp',
     'an image of a white sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -393,7 +393,7 @@ VALUES (
   (
     44,
     16,
-    'http://192.168.5.185:3000/img/fauteuil-cuir-blanc-3.webp',
+    'http://localhost:3000/img/fauteuil-cuir-blanc-3.webp',
     'an image of a white sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -401,7 +401,7 @@ VALUES (
   (
     45,
     17,
-    'http://192.168.5.185:3000/img/canape-angle-gris.webp',
+    'http://localhost:3000/img/canape-angle-gris.webp',
     'an image of a grey sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -409,7 +409,7 @@ VALUES (
   (
     46,
     17,
-    'http://192.168.5.185:3000/img/canape-angle-gris-1.webp',
+    'http://localhost:3000/img/canape-angle-gris-1.webp',
     'an image of a grey sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -417,7 +417,7 @@ VALUES (
   (
     47,
     17,
-    'http://192.168.5.185:3000/img/canape-angle-gris-2.webp',
+    'http://localhost:3000/img/canape-angle-gris-2.webp',
     'an image of a grey sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -425,7 +425,7 @@ VALUES (
   (
     48,
     17,
-    'http://192.168.5.185:3000/img/canape-angle-gris-3.webp',
+    'http://localhost:3000/img/canape-angle-gris-3.webp',
     'an image of a grey sofa',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -433,7 +433,7 @@ VALUES (
   (
     49,
     18,
-    'http://192.168.5.185:3000/img/lit-bois-massif.webp',
+    'http://localhost:3000/img/lit-bois-massif.webp',
     'an image of a wooden bed',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -441,7 +441,7 @@ VALUES (
   (
     50,
     18,
-    'http://192.168.5.185:3000/img/lit-bois-massif-1.webp',
+    'http://localhost:3000/img/lit-bois-massif-1.webp',
     'an image of a wooden bed',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -449,7 +449,7 @@ VALUES (
   (
     51,
     18,
-    'http://192.168.5.185:3000/img/lit-bois-massif-2.webp',
+    'http://localhost:3000/img/lit-bois-massif-2.webp',
     'an image of a wooden bed',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -457,7 +457,7 @@ VALUES (
   (
     52,
     18,
-    'http://192.168.5.185:3000/img/lit-bois-massif-3.webp',
+    'http://localhost:3000/img/lit-bois-massif-3.webp',
     'an image of a wooden bed',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -465,7 +465,7 @@ VALUES (
   (
     53,
     19,
-    'http://192.168.5.185:3000/img/table-pliante-blanc.webp',
+    'http://localhost:3000/img/table-pliante-blanc.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -473,7 +473,7 @@ VALUES (
   (
     54,
     19,
-    'http://192.168.5.185:3000/img/table-pliante-blanc-1.webp',
+    'http://localhost:3000/img/table-pliante-blanc-1.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -481,7 +481,7 @@ VALUES (
   (
     55,
     19,
-    'http://192.168.5.185:3000/img/table-pliante-blanc-2.webp',
+    'http://localhost:3000/img/table-pliante-blanc-2.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -489,7 +489,7 @@ VALUES (
   (
     56,
     19,
-    'http://192.168.5.185:3000/img/table-pliante-blanc-3.webp',
+    'http://localhost:3000/img/table-pliante-blanc-3.webp',
     'an image of a white table',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -497,7 +497,7 @@ VALUES (
   (
     57,
     20,
-    'http://192.168.5.185:3000/img/lampe-table-bois.webp',
+    'http://localhost:3000/img/lampe-table-bois.webp',
     'an image of a wooden lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -505,7 +505,7 @@ VALUES (
   (
     58,
     20,
-    'http://192.168.5.185:3000/img/lampe-table-bois-1.webp',
+    'http://localhost:3000/img/lampe-table-bois-1.webp',
     'an image of a wooden lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -513,7 +513,7 @@ VALUES (
   (
     59,
     20,
-    'http://192.168.5.185:3000/img/lampe-table-bois-2.webp',
+    'http://localhost:3000/img/lampe-table-bois-2.webp',
     'an image of a wooden lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
@@ -521,7 +521,7 @@ VALUES (
   (
     60,
     20,
-    'http://192.168.5.185:3000/img/lampe-table-bois-3.webp',
+    'http://localhost:3000/img/lampe-table-bois-3.webp',
     'an image of a wooden lamp',
     '2024-11-05 14:56:57',
     '2024-11-05 14:56:57'
