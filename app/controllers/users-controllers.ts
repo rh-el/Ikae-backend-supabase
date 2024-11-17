@@ -36,7 +36,7 @@ const postNewUser = (req: Request, res: Response) => {
 							"Some error occured while creating a new user.",
 					});
 				}
-				res.send(generateToken(newUser.email));
+				res.send(JSON.stringify(generateToken(newUser.email)));
 			});
 		}
 	});
