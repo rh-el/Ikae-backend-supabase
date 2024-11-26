@@ -48,7 +48,6 @@ const getAllProducts = async (req: Request, res: Response) => {
   }))
 	
 	if (error) return res.status(500).json({ error: error.message })
-		// console.log(res.json(data))
 	res.json(processedData)
 }
 
@@ -68,13 +67,11 @@ const getProduct = async (req: Request, res: Response) => {
 		const processedProduct = data ? {
 			...data,
 			images: data.images 
-			  ? data.images.map((img: { image_link: any; }) => img.image_link)
+			  ? data.images.map((img: { image_link: ImageLink; }) => img.image_link)
 			  : null
 		  } : null
 		
-		if (error) return res.status(500).json({ error: error.message })
-		console.log(processedProduct);
-		
+		if (error) return res.status(500).json({ error: error.message })		
 		res.json(processedProduct)
 };
 

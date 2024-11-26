@@ -5,7 +5,7 @@ import supabase from "../models/db";
 
 const products = require("../controllers/products-controllers");
 // const orders = require("../controllers/orders-controllers");
-// const users = require("../controllers/users-controllers");
+const users = require("../controllers/users-controllers");
 
 const productRoutes = (app: Express) => {
 
@@ -42,13 +42,13 @@ const productRoutes = (app: Express) => {
 
 	// // test route for token check middleware
 	// // not good - TODO
-	// router.get("/login", users.login);
+	router.get("/login", users.login);
 
 	// //send a new token when logged in
 	// router.get("/token", users.returnToken);
 
 	// // create a new user, return token
-	// router.post("/register", users.postNewUser);
+	router.post("/register", users.register);
 
 	// // mount the router to the main app on the specified path
 	app.use("/", router);
