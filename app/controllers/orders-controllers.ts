@@ -1,14 +1,10 @@
 import { Request, Response } from "express";
 import Order from "../models/order.model";
 import User from "../models/user.model";
-import { authenticateToken } from "../middleware/auth";
 import jwt from 'jsonwebtoken';
-import { log } from "console";
 
 
-const getEmailFromToken = (token: string): Promise<any> => {
-	console.log(token);
-	
+const getEmailFromToken = (token: string): Promise<string> => {	
 	return new Promise((resolve, reject) => {
 	  jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, decoded: any) => {
 		if (err) {
@@ -22,70 +18,55 @@ const getEmailFromToken = (token: string): Promise<any> => {
 	});
 };
 
-
+const validateHeader = (header: any, fieldName: string): string => {
+    if (!header) {
+        throw new Error(`No ${fieldName} provided in headers`);
+    }
+    return Array.isArray(header) ? header[0] : header;
+};
 
 const postNewOrder = async (req: Request, res: Response) => {
+	try {
 
-	let postResponse = {
-	}
-	
-	if (!req.body) {
-		res.status(400).send({
-			message: "Content can not be empty!",
-		});
-	}
+		const token = validateHeader(req.headers['authorization'], "authorization")
+		const userEmail: string = await getEmailFromToken(token)
+		const userId = await User.getIdFromEmail(userEmail) 
 
-	
-	// get email associated to a token
-	const userEmail: any = await getEmailFromToken(req.body.token)	
+		const newOrder = new Order({ user_id: userId, total_price: req.body.total_price	})
+		const newOrderId = await Order.postNewOrder(newOrder)
 
-	postResponse = { ...postResponse, "user_email": userEmail}
-	
-	// get id from email
-	User.getIdFromEmail(userEmail, (err, userId: any) => {
-		if (err) {
-			res.status(500).send({
-				message: err.message || "Some error occured while getting posts.",
-			});
-			console.log(
-				"Some error occured while getting user Id from email"
-			);
-		} else {
-			const newOrder = new Order({
-				user_id: userId[0].id,
-				total_price: req.body.total_price,
-			});
-		
-			// create now order with user_id and total_price
-			Order.postNewOrder(newOrder, (err, data) => {
-				if (err) {
-					res.status(500).send({
-						message: err.message || "Some error occured while posting a new order.",
-					});
-				} else {
+		const productIds = req.body.products_ids
 
-					// create order items with order_id and productid[]
-					req.body.products_id.forEach((productId: any) => {
-						
-						Order.postNewOrderItem(data!.insertId, productId, (err, data) => {
-							if (err) {
-								res.status(500).send({
-									message:
-									err.message ||
-									"Some error occured while posting a new order item.",
-								})
-							} 
-						})
-					});
-				postResponse = { ...postResponse, "order_id": data?.insertId}
-				res.send(postResponse)
-				}
-
-			// res.send(userId);
-		})
-			
+		if (!productIds || productIds.length === 0) {
+			throw new Error('no product ids in request body')
 		}
-})
+		let orderDataToInsert: object[] = []
+		productIds.forEach((id: number) => {
+			orderDataToInsert.push({ order_id: newOrderId, product_id: id })
+		});
+		
+		const newOrderItems = await Order.postNewOrderItem(orderDataToInsert)
+		console.log(newOrderItems)
+
+		const responseData = {
+			order_id: newOrderId,
+			user_email: userEmail,
+			total_price: req.body.total_price,
+			product_ids: req.body.products_ids
+		}
+
+		res.json(responseData)
+
+
+	} catch (error) {
+
+		console.error("some error occured while posting new order:", error)
+		return res.status(500).json({
+			error: error || 'some error occured while posting new order'
+		})
+
+	}
+
 }
 
 exports.postNewOrder = postNewOrder;

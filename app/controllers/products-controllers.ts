@@ -75,43 +75,7 @@ const getProduct = async (req: Request, res: Response) => {
 		res.json(processedProduct)
 };
 
-// // get all products from db
-// // exactly the same as getAllProducts for now
-// // can be used if informations needed in dashboard differ from those used in home
-// // if so, new backend dream team has to create a new Product method :)
-// const getAllProductsDashboard = (req: Request, res: Response) => {
-// 	Product.getAll((err, data) => {
-// 		if (err) {
-// 			res.status(500).send({
-// 				message: err.message || "Some error occured while getting posts.",
-// 			});
-// 			console.log(
-// 				"Some error occured while getting all products for the dashboard"
-// 			);
-// 		}
-// 		res.send(data);
-// 	});
-// };
 
-// // get order confirmation information
-// // wondering why it's not in order-controllers as I am writing this comment
-// // not functional at the moment, fully functional client login/registration needed first
-// const getConfirmation = (req: Request, res: Response) => {
-// 	Product.getConfirmationInfo(req.params.id, (err, data) => {
-// 		if (err) {
-// 			res.status(500).send({
-// 				message:
-// 					err.message ||
-// 					"An error occured while retrieving your confirmation informations.",
-// 			});
-// 			console.log(
-// 				"An occured while retrieving your confirmation informations."
-// 			);
-// 		} else {
-// 			res.send(data);
-// 		}
-// 	});
-// };
 
 // // delete a product from the database
 // // this will completely delete the product and all its infos

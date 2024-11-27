@@ -4,7 +4,7 @@ import { rejects } from "assert";
 import supabase from "../models/db";
 
 const products = require("../controllers/products-controllers");
-// const orders = require("../controllers/orders-controllers");
+const orders = require("../controllers/orders-controllers");
 const users = require("../controllers/users-controllers");
 
 const productRoutes = (app: Express) => {
@@ -20,7 +20,7 @@ const productRoutes = (app: Express) => {
 	router.get("/product/:id", products.getProduct);
 
 	// // route to order
-	// router.post("/order", orders.postNewOrder);
+	router.post("/order", orders.postNewOrder);
 
 	// // route to get confirmation after ordering
 	// router.get("/confirmation/:id", products.getConfirmation);
@@ -46,6 +46,8 @@ const productRoutes = (app: Express) => {
 
 	// //send a new token when logged in
 	// router.get("/token", users.returnToken);
+
+	// router.get('/email', orders.getEmail)
 
 	// // create a new user, return token
 	router.post("/register", users.register);

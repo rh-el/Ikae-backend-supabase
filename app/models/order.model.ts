@@ -1,4 +1,5 @@
-import connection from "./db";
+import supabase from "./db";
+
 const queries = require("../models/queries");
 
 interface Order {
@@ -11,12 +12,9 @@ interface Order {
 class Order {
 	static postNewOrder: (
 		newOrder: Order,
-		result: (err: Error | null, data: Order | null) => void
-	) => void;
+	) => Promise<number>;
 	static postNewOrderItem: (
-		order_id: number,
-		product_id: number,
-		result: (err: Error | null, data: number[] | null) => void
+		linesToInsert: object[]
 	) => void;
 	constructor(order: any) {
 		this.order_id = order.order_id;
@@ -26,43 +24,22 @@ class Order {
 }
 
 // creates a new order
-Order.postNewOrder = (
-	newOrder: Order,
-	result: (err: Error | null, data: Order | null) => void
-) => {
-	const query = queries.postNewOrderQuery();
+Order.postNewOrder = async (newOrder: Order): Promise<number> => {
+	const { data, error } = await supabase
+		.from('orders')
+		.insert(newOrder)
+		.select()
+		if (error) throw new Error(error.message)
+	return data[0].id
+}
 
-	console.log(newOrder);
-	connection.query(
-		query,
-		[newOrder.user_id, newOrder.total_price],
-		(err: Error, res: Order) => {
-			if (err) {
-				console.log("error: ", err);
-				result(err, null);
-				return;
-			}
-			result(null, res);
-		}
-	);
-};
-
-// creates a new line in db associating a product_id with its order_id
-Order.postNewOrderItem = (
-	order_id: number,
-	product_id: number,
-	result: (err: Error | null, data: number[] | null) => void
-) => {
-	const query = queries.postNewOrderItemQuery();
-
-	connection.query(query, [order_id, product_id], (err: Error, res: Order) => {
-		if (err) {
-			console.log("error: ", err);
-			result(err, null);
-			return;
-		}
-		result(null, [order_id, product_id]);
-	});
-};
+Order.postNewOrderItem = async (linesToInsert: object[]): Promise<any> => {
+	const { data, error } = await supabase
+		.from('order_items')
+		.insert(linesToInsert)
+		.select()
+		if (error) throw new Error(error.message)
+	return data
+}
 
 export default Order;
