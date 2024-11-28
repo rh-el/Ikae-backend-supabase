@@ -1,6 +1,8 @@
 import supabase from "./db";
-const queries = require("../models/queries");
 
+type ImageLink = {
+	image_link: string[]
+}
 interface Product {
 	product_name: string;
 	price: number;
@@ -12,16 +14,15 @@ interface Product {
 	in_stock: boolean;
 	user_id: number;
 	image_links: string;
+	images: ImageLink[]
 }
 
 class Product {
 	static getAll: (
-		result: (err: Error | null, data: Product[] | null) => void
-	) => void;
+	) => Promise<Product[]>;
 	static getProductInfo: (
 		productID: string,
-		result: (err: Error | null, data: any | null) => void
-	) => void;
+	) => Promise<Product>;
 	static getConfirmationInfo: (
 		orderID: string,
 		result: (err: Error | null, data: Product[] | null) => void
@@ -41,8 +42,7 @@ class Product {
 	static updateProductInfo: (
 		productInfos: Product,
 		productID: string,
-		result: (err: Error | null, data: Product | null) => void
-	) => void;
+	) => Promise<Product>;
 
 	constructor(product: any) {
 		this.product_name = product.product_name;
@@ -57,6 +57,59 @@ class Product {
 		this.image_links = product.image_links;
 	}
 }
+
+Product.getAll = async () => {
+	const { data, error } = await supabase
+	.from('products')
+	.select(`
+	  id, 
+	  product_name, 
+	  price,
+	  type,
+	  material,
+	  color,
+	  state,
+	  description,
+	  in_stock,
+	  user_id,
+	  images:images(image_link)
+	`)
+	if (error) throw new Error(error.message)
+	return data
+}
+
+Product.getProductInfo = async (productId) => {
+	const { data, error } = await supabase	
+	.from('products')
+	.select(`
+		*,
+		images:images(image_link)
+	`)
+	.eq('id', productId)
+	.single()
+
+	if (error) throw new Error(error.message)
+	return data	
+}
+
+Product.updateProductInfo = async (product: Product, productId) => {
+	const { data, error } = await supabase
+		.from('products')
+		.update({ 
+			product_name: product.product_name,
+			description: product.description,
+			material: product.material,
+			price: product.price,
+			state: product.state,
+			type: product.type
+		})
+		.eq("id", productId)
+		.select()
+	
+	if (error) throw new Error(error.message)
+	return data
+}
+
 
 // // get all products from products table
 // Product.getAll = (

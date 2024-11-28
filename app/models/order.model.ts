@@ -1,7 +1,5 @@
 import supabase from "./db";
 
-const queries = require("../models/queries");
-
 interface Order {
 	order_id: number;
 	user_id: number;

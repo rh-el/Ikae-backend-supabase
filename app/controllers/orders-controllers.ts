@@ -57,16 +57,13 @@ const postNewOrder = async (req: Request, res: Response) => {
 
 		res.json(responseData)
 
-
 	} catch (error) {
 
 		console.error("some error occured while posting new order:", error)
 		return res.status(500).json({
 			error: error || 'some error occured while posting new order'
 		})
-
 	}
-
 }
 
 exports.postNewOrder = postNewOrder;

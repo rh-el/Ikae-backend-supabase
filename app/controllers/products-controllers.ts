@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-// import Product from "../models/product.model";
+import Product from "../models/product.model";
 import supabase from "../models/db";
 
 type ImageLink = {
 	image_link: string[]
 }
 
-type Product = {
+type ProductType = {
 	color: string
 	description: string
 	id: number
@@ -24,55 +24,44 @@ type Product = {
 // get all products from db
 // format the response object image_links field for easier client side handling
 const getAllProducts = async (req: Request, res: Response) => {
-	const { data, error } = await supabase
-  .from('products')
-  .select(`
-    id, 
-    product_name, 
-    price,
-    type,
-    material,
-    color,
-    state,
-    description,
-    in_stock,
-    user_id,
-    images:images(image_link)
-  `)
+	try {
+		const productData = await Product.getAll()
+		const processedData = productData.map((product) => ({
+		...product,
+		images: product.images 
+		  ? product.images.map(img => img.image_link)
+		  : null
+	  }))
+		res.json(processedData)
 
-  const processedData = data.map((product: Product) => ({
-	...product,
-	images: product.images 
-	  ? product.images.map(img => img.image_link)
-	  : null
-  }))
-	
-	if (error) return res.status(500).json({ error: error.message })
-	res.json(processedData)
+	} catch (error: any) {
+
+		console.error('error while fetching products:', error)
+		res.status(500).json({ error: error.message})
+
+	}
 }
 
 
 // // get all informations of a single product
 // // format the response object image_links field for easier client side handling
 const getProduct = async (req: Request, res: Response) => {
-	const { data, error } = await supabase	
-		.from('products')
-		.select(`
-			*,
-			images:images(image_link)
-		`)
-		.eq('id', req.params.id)
-		.single()
-	
-		const processedProduct = data ? {
-			...data,
-			images: data.images 
-			  ? data.images.map((img: { image_link: ImageLink; }) => img.image_link)
+	try {
+		const productData = await Product.getProductInfo(req.params.id)
+		const processedProduct = productData ? {
+			...productData,
+			images: productData.images 
+			  ? productData.images.map(img => img.image_link)
 			  : null
 		  } : null
-		
-		if (error) return res.status(500).json({ error: error.message })		
+		  
 		res.json(processedProduct)
+	} catch (error: any) {
+
+		console.error('error while fetching products:', error)
+		res.status(500).json({ error: error.message})
+
+	}
 };
 
 
@@ -143,40 +132,34 @@ const getProduct = async (req: Request, res: Response) => {
 // };
 
 // // update a product informations
-// const updateProductInfo = (req: Request, res: Response) => {
-// 	if (!req.body) {
-// 		res.status(400).send({
-// 			message: "Content can not be empty!",
-// 		});
-// 	}
-// 	const product = new Product({
-// 		product_name: req.body.product_name,
-// 		price: req.body.price,
-// 		type: req.body.type,
-// 		material: req.body.material,
-// 		color: req.body.color,
-// 		state: req.body.state,
-// 		description: req.body.description,
-// 		in_stock: req.body.in_stock,
-// 		user_id: req.body.user_id,
-// 	});
+const updateProductInfo = async (req: Request, res: Response) => {
+	try {
+		const product = new Product({
+			product_name: req.body.productName,
+			price: req.body.price,
+			type: req.body.type,
+			material: req.body.material,
+			state: req.body.state,
+			description: req.body.description
+		});
+	
+		const productData = await Product.updateProductInfo(product, req.params.id)
+		res.json(productData)
 
-// 	Product.updateProductInfo(product, req.params.id, (err, data) => {
-// 		if (err) {
-// 			res.status(500).send({
-// 				message: err.message || "Some error occured while updating product.",
-// 			});
-// 		} else {
-// 			res.send(data);
-// 		}
-// 	});
-// };
+	} catch (error: any) {
+		
+		console.error('error while fetching products:', error)
+		res.status(500).json({ error: error.message})
+
+	}
+
+	};
 
 exports.getAllProducts = getAllProducts;
 exports.getProduct = getProduct;
+exports.updateProductInfo = updateProductInfo;
 // exports.deleteProduct = deleteProduct;
 // exports.updateProductStock = updateProductStock;
 // exports.getConfirmation = getConfirmation;
 // exports.getAllProductsDashboard = getAllProductsDashboard;
 // exports.postNewProduct = postNewProduct;
-// exports.updateProductInfo = updateProductInfo;

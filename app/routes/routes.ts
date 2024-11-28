@@ -35,7 +35,7 @@ const productRoutes = (app: Express) => {
 	// router.put("/dashboard/update-stock/:id", authenticateToken, products.updateProductStock);
 
 	// // update product infos from dashboard
-	// router.put("/dashboard/update-product/:id", authenticateToken, products.updateProductInfo);
+	router.put("/dashboard/update-product/:id", products.updateProductInfo);
 
 	// // create a new product
 	// router.post("/dashboard/new-product", authenticateToken, products.postNewProduct);
