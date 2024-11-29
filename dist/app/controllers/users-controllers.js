@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const dotenv_1 = __importDefault(require("dotenv"));
 const user_model_1 = __importDefault(require("../models/user.model"));
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const comparePasswords = (userPassword, hashedPassword) => __awaiter(void 0, void 0, void 0, function* () {
@@ -35,7 +34,6 @@ const validateHeader = (header, fieldName) => {
     return Array.isArray(header) ? header[0] : header;
 };
 const generateAuthToken = (email) => {
-    dotenv_1.default.config();
     return jsonwebtoken_1.default.sign({ email }, process.env.TOKEN_SECRET, { expiresIn: "2days" });
 };
 const getHashedPassword = (password) => {

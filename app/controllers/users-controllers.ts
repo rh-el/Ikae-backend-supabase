@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
 import User from "../models/user.model";
 import bcrypt from "bcryptjs";
 
@@ -25,7 +24,6 @@ const validateHeader = (header: any, fieldName: string): string => {
 };
 
 const generateAuthToken = (email: string): string => {
-	dotenv.config()
 	return jwt.sign({ email }, process.env.TOKEN_SECRET as string, { expiresIn: "2days"})
 }
 
@@ -45,7 +43,6 @@ const login = async (req: Request, res: Response) => {
 		const isPasswordCorrect = await comparePasswords(password, storedPassword)
 
 		if (isPasswordCorrect) {
-
 			const authToken = generateAuthToken(email)
 
 			return res.status(200).json({
