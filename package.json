@@ -9,7 +9,7 @@
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.3"
   },
-  "name": "plateforme-vente-de-meuble-backend",
+  "name": "ikae-backend",
   "version": "1.0.0",
   "main": "dist/server.js",
   "scripts": {
