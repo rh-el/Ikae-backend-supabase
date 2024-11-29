@@ -15,7 +15,8 @@
   "scripts": {
     "test": "mocha",
     "start": "node dist/server.ts",
-    "dev": "nodemon server.ts"
+    "dev": "nodemon server.ts",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",
