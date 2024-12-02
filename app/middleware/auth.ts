@@ -8,7 +8,9 @@ export interface AuthenticatedRequest extends Request {
 
 // check validity of a token
 export function authenticateToken(req: Request, res: Response, next: any) {
-  dotenv.config();
+  // dotenv.config();
+
+  console.log(req.headers)
 
   const authHeader = req.headers['authorization']
   const token = authHeader?.split(' ')[1]

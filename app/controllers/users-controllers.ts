@@ -38,9 +38,17 @@ const login = async (req: Request, res: Response) => {
 		
 		const email = validateHeader(req.headers.email, "email")
 		const password = validateHeader(req.headers.password, 'password')
+		
+		const isUserInexistant = await User.checkUserInDb(email)
+		console.log(isUserInexistant)
+		if (isUserInexistant) {
+			return res.status(401).json({ error: 'No account found associated to the provided email address'})
+		}
+		
 
 		const storedPassword: string = await User.getStoredPassword(email)
 		const isPasswordCorrect = await comparePasswords(password, storedPassword)
+
 
 		if (isPasswordCorrect) {
 			const authToken = generateAuthToken(email)

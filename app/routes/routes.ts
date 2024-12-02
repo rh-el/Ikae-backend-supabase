@@ -32,6 +32,10 @@ const productRoutes = (app: Express) => {
 	// // not good - TODO
 	router.get("/login", users.login);
 
+
+// TODO: use authenticateToken to authorize dashboard access
+	router.get('/test', authenticateToken)
+
 	// // create a new user, return token
 	router.post("/register", users.register);
 
